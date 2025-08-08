@@ -19,6 +19,7 @@
       color: #111;
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     a {
@@ -31,27 +32,26 @@
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 32, 39, 0.9);
-      padding: 10px 40px;
+      background: rgba(15, 32, 39, 0.95);
+      padding: 14px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 999;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
     }
 
-    nav .nav-logo {
-      font-size: 1.3em;
+    .nav-logo {
+      font-size: 1.5em;
       font-weight: 700;
       color: #fff;
+      letter-spacing: 1px;
     }
 
     nav ul {
       display: flex;
-      gap: 25px;
-    }
-
-    nav ul li {
+      gap: 30px;
       list-style: none;
     }
 
@@ -59,19 +59,31 @@
       color: #fff;
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
     }
 
-    nav ul li a:hover {
-      color: #ff6600;
+    nav ul li a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #ff6600;
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     header {
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      padding: 140px 20px 100px;
+      padding: 160px 20px 120px;
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
 
     .logo {
@@ -81,7 +93,7 @@
     }
 
     .brand-name {
-      font-size: 3em;
+      font-size: 3.2em;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -89,8 +101,8 @@
     }
 
     .tagline {
-      font-size: 1.5em;
-      color: #ddd;
+      font-size: 1.6em;
+      color: #ccc;
       margin-top: 12px;
       animation: fadeIn 1.4s ease;
     }
@@ -100,28 +112,41 @@
       display: inline-block;
       background: #ff6600;
       color: #fff;
-      padding: 14px 30px;
-      border-radius: 8px;
+      padding: 14px 32px;
+      border-radius: 10px;
       font-weight: 600;
-      font-size: 1em;
+      font-size: 1.1em;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
     .cta:hover {
       background: #e65c00;
-      transform: translateY(-2px);
+      transform: scale(1.05);
     }
 
     .section {
       padding: 100px 20px 80px;
       text-align: center;
+      position: relative;
     }
 
     .section h2 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin-bottom: 30px;
       color: #111;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: #ff6600;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .feature-grid {
@@ -130,24 +155,25 @@
       gap: 40px;
       max-width: 1200px;
       margin: auto;
+      margin-top: 40px;
     }
 
     .feature {
-      padding: 30px;
+      padding: 40px 30px;
       border-radius: 12px;
-      background: #f8f8f8;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .feature:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
     }
 
     .feature img {
       width: 64px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .feature h3 {
@@ -156,7 +182,7 @@
     }
 
     .feature p {
-      color: #444;
+      color: #555;
       font-size: 1em;
     }
 
@@ -164,7 +190,7 @@
       max-width: 850px;
       margin: 20px auto;
       color: #555;
-      font-size: 1.1em;
+      font-size: 1.15em;
       line-height: 1.8;
     }
 
@@ -178,26 +204,26 @@
 
     .highlight {
       flex: 1 1 300px;
-      padding: 20px;
-      background: #fff;
+      padding: 24px;
+      background: #fafafa;
       border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
-      transition: transform 0.3s;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
 
     .highlight:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .highlight h4 {
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin-bottom: 10px;
       color: #222;
     }
 
     .highlight p {
-      font-size: 0.95em;
+      font-size: 1em;
       color: #555;
     }
 
@@ -219,8 +245,8 @@
       background: #222;
       color: #bbb;
       text-align: center;
-      padding: 30px 20px;
-      font-size: 0.9em;
+      padding: 40px 20px;
+      font-size: 0.95em;
     }
 
     @keyframes fadeIn {
@@ -237,18 +263,23 @@
       nav ul {
         flex-direction: column;
         gap: 10px;
+        background: rgba(15, 32, 39, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 20px;
+        display: none;
       }
       .brand-name {
-        font-size: 2.2em;
+        font-size: 2.4em;
       }
       .tagline {
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
     }
   </style>
 </head>
 <body>
-
   <nav>
     <div class="nav-logo">MOXWELL</div>
     <ul>
@@ -290,7 +321,6 @@
     <h2>About Moxwell</h2>
     <p>Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
     <p>With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
-
     <div class="highlights">
       <div class="highlight">
         <h4>Data Privacy First</h4>
@@ -316,6 +346,5 @@
   <footer>
     &copy; 2025 Moxwell. Built with innovation in Canada.
   </footer>
-
 </body>
 </html>
