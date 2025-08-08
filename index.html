@@ -129,6 +129,39 @@
       line-height: 1.8;
     }
 
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .highlight {
+      flex: 1 1 300px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+      transition: transform 0.3s;
+    }
+
+    .highlight:hover {
+      transform: translateY(-5px);
+    }
+
+    .highlight h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .highlight p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
     .contact {
       background: #f3f3f3;
     }
@@ -205,6 +238,21 @@
     <h2>About Moxwell</h2>
     <p>Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
     <p>With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
+
+    <div class="highlights">
+      <div class="highlight">
+        <h4>Data Privacy First</h4>
+        <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
+      </div>
+      <div class="highlight">
+        <h4>Real-Time Analytics</h4>
+        <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
+      </div>
+      <div class="highlight">
+        <h4>Seamless Integration</h4>
+        <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
+      </div>
+    </div>
   </section>
 
   <section class="section contact">
