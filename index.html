@@ -7,6 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
     * {
       box-sizing: border-box;
@@ -262,6 +263,12 @@
   </style>
 </head>
 <body>
+  <!-- Add AOS library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+  </script>
+
   <nav>
     <div class="nav-logo">MOXWELL</div>
     <ul>
@@ -272,26 +279,26 @@
   </nav>
 
   <header>
-    <img src="logo.png" alt="Moxwell Logo" class="logo" />
-    <h1 class="brand-name">MOXWELL</h1>
-    <p class="tagline">Smart Insurance. Real Impact.</p>
-    <a class="cta" href="#contact">Get in Touch</a>
+    <img src="logo.png" alt="Moxwell Logo" class="logo" data-aos="fade-down" />
+    <h1 class="brand-name" data-aos="fade-up">MOXWELL</h1>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="100">Smart Insurance. Real Impact.</p>
+    <a class="cta" href="#contact" data-aos="zoom-in" data-aos-delay="200">Get in Touch</a>
   </header>
 
   <section id="features" class="section features">
-    <h2>Why Moxwell?</h2>
+    <h2 data-aos="fade-up">Why Moxwell?</h2>
     <div class="feature-grid">
-      <div class="feature">
+      <div class="feature" data-aos="fade-up" data-aos-delay="100">
         <img src="cloud-icon.svg" alt="Cloud-Native" />
         <h3>Cloud-Native</h3>
         <p>Built to scale securely and flexibly with modern cloud infrastructure.</p>
       </div>
-      <div class="feature">
+      <div class="feature" data-aos="fade-up" data-aos-delay="200">
         <img src="ai-icon.svg" alt="AI-Ready" />
         <h3>AI-Ready</h3>
         <p>Transform raw data into predictive insights for better decision-making.</p>
       </div>
-      <div class="feature">
+      <div class="feature" data-aos="fade-up" data-aos-delay="300">
         <img src="mobile-icon.svg" alt="Mobile-First" />
         <h3>Mobile-First</h3>
         <p>Delightful digital experiences across mobile and web interfaces.</p>
@@ -300,19 +307,19 @@
   </section>
 
   <section id="about" class="section about">
-    <h2>About Moxwell</h2>
-    <p>Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
-    <p>With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
+    <h2 data-aos="fade-up">About Moxwell</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
+    <p data-aos="fade-up" data-aos-delay="200">With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
     <div class="highlights">
-      <div class="highlight">
+      <div class="highlight" data-aos="zoom-in" data-aos-delay="100">
         <h4><i class="fa-solid fa-shield-halved"></i> Data Privacy First</h4>
         <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
       </div>
-      <div class="highlight">
+      <div class="highlight" data-aos="zoom-in" data-aos-delay="200">
         <h4><i class="fa-solid fa-chart-line"></i> Real-Time Analytics</h4>
         <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
       </div>
-      <div class="highlight">
+      <div class="highlight" data-aos="zoom-in" data-aos-delay="300">
         <h4><i class="fa-solid fa-plug-circle-bolt"></i> Seamless Integration</h4>
         <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
       </div>
@@ -320,9 +327,9 @@
   </section>
 
   <section id="contact" class="section contact">
-    <h2>Contact Us</h2>
-    <a class="cta" href="mailto:info@moxwell.ca">Let's Talk</a>
-    <p class="email-display">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
+    <h2 data-aos="fade-up">Contact Us</h2>
+    <a class="cta" href="mailto:info@moxwell.ca" data-aos="fade-up" data-aos-delay="100">Let's Talk</a>
+    <p class="email-display" data-aos="fade-up" data-aos-delay="200">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
   </section>
 
   <footer>
