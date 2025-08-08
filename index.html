@@ -6,6 +6,7 @@
   <title>Moxwell - Smart Insurance. Real Impact.</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,15 +14,12 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #ffffff;
       color: #111;
       line-height: 1.6;
+      scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
@@ -46,7 +44,7 @@
     }
 
     .nav-logo {
-      font-size: 1.5em;
+      font-size: 1.6em;
       font-weight: 700;
       color: #fff;
       letter-spacing: 1px;
@@ -121,7 +119,6 @@
       font-size: 1.1em;
       transition: all 0.3s ease;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
     }
 
     .cta:hover {
@@ -165,14 +162,14 @@
     .feature {
       padding: 40px 30px;
       border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .feature:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
     }
 
     .feature img {
@@ -209,10 +206,10 @@
     .highlight {
       flex: 1 1 300px;
       padding: 24px;
-      background: #fafafa;
-      border: 1px solid #ddd;
+      background: #ffffff;
+      border: 1px solid #eee;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
       transition: transform 0.3s ease;
     }
 
@@ -232,7 +229,7 @@
     }
 
     .contact {
-      background: #f3f3f3;
+      background: #f2f2f2;
     }
 
     .email-display {
@@ -246,7 +243,7 @@
     }
 
     footer {
-      background: #222;
+      background: #111;
       color: #bbb;
       text-align: center;
       padding: 40px 20px;
@@ -261,25 +258,6 @@
     @keyframes slideIn {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        background: rgba(15, 32, 39, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        padding: 20px;
-        display: none;
-      }
-      .brand-name {
-        font-size: 2.4em;
-      }
-      .tagline {
-        font-size: 1.2em;
-      }
     }
   </style>
 </head>
@@ -327,15 +305,15 @@
     <p>With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
     <div class="highlights">
       <div class="highlight">
-        <h4>Data Privacy First</h4>
+        <h4><i class="fa-solid fa-shield-halved"></i> Data Privacy First</h4>
         <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
       </div>
       <div class="highlight">
-        <h4>Real-Time Analytics</h4>
+        <h4><i class="fa-solid fa-chart-line"></i> Real-Time Analytics</h4>
         <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
       </div>
       <div class="highlight">
-        <h4>Seamless Integration</h4>
+        <h4><i class="fa-solid fa-plug-circle-bolt"></i> Seamless Integration</h4>
         <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
       </div>
     </div>
