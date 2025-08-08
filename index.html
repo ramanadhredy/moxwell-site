@@ -15,9 +15,10 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
+      background: #fff;
       color: #111;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     a {
@@ -30,6 +31,19 @@
       color: #fff;
       padding: 80px 20px 60px;
       text-align: center;
+      position: relative;
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #fff;
+      font-weight: 500;
     }
 
     .logo {
@@ -45,14 +59,14 @@
 
     .tagline {
       font-size: 1.4em;
-      color: #ddd;
+      color: #eee;
       margin-top: 10px;
     }
 
     .cta {
       margin-top: 30px;
       display: inline-block;
-      background: #ff6600;
+      background: #111;
       color: #fff;
       padding: 14px 28px;
       border-radius: 6px;
@@ -61,18 +75,17 @@
     }
 
     .cta:hover {
-      background: #e65c00;
+      background: #333;
     }
 
     .section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
 
     .section h2 {
-      font-size: 2.2em;
+      font-size: 2.4em;
       margin-bottom: 30px;
-      color: #111;
     }
 
     .feature-grid {
@@ -84,14 +97,16 @@
     }
 
     .feature {
-      padding: 20px;
-      border-radius: 8px;
-      background: #f2f2f2;
-      transition: transform 0.3s;
+      padding: 30px;
+      border-radius: 10px;
+      background: #f4f4f4;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease-in-out;
     }
 
     .feature:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     .feature img {
@@ -110,14 +125,14 @@
     }
 
     .about p {
-      max-width: 800px;
-      margin: 10px auto;
+      max-width: 850px;
+      margin: 15px auto;
       color: #555;
-      font-size: 1.05em;
+      font-size: 1.1em;
     }
 
     .contact {
-      background: #f7f7f7;
+      background: #fafafa;
     }
 
     .email-display {
@@ -131,14 +146,19 @@
     }
 
     footer {
-      background: #222;
-      color: #bbb;
+      background: #111;
+      color: #ccc;
       text-align: center;
       padding: 30px 20px;
       font-size: 0.9em;
     }
 
     @media (max-width: 768px) {
+      nav {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+      }
       .brand-name {
         font-size: 2.2em;
       }
@@ -154,10 +174,15 @@
     <img src="logo.png" alt="Moxwell Logo" class="logo" />
     <h1 class="brand-name">MOXWELL</h1>
     <p class="tagline">Smart Insurance. Real Impact.</p>
-    <a class="cta" href="mailto:info@moxwell.ca">Get in Touch</a>
+    <a class="cta" href="#contact">Get in Touch</a>
+    <nav>
+      <a href="#features">Why Moxwell</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="section features">
+  <section id="features" class="section features">
     <h2>Why Moxwell?</h2>
     <div class="feature-grid">
       <div class="feature">
@@ -178,13 +203,13 @@
     </div>
   </section>
 
-  <section class="section about">
+  <section id="about" class="section about">
     <h2>About Moxwell</h2>
     <p>Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
     <p>With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
   </section>
 
-  <section class="section contact">
+  <section id="contact" class="section contact">
     <h2>Contact Us</h2>
     <a class="cta" href="mailto:info@moxwell.ca">Let's Talk</a>
     <p class="email-display">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
