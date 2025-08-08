@@ -5,219 +5,198 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Moxwell - Smart Insurance. Real Impact.</title>
-  <meta name="description" content="Moxwell builds mobile-first, AI-ready tools for modern insurers—delivering faster decisions, seamless experiences, and real-time analytics." />
-  <link rel="canonical" href="https://moxwell.ca/" />
 
-  <!-- Icons -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- Fonts + CSS libs -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- OpenGraph / Twitter -->
-  <meta property="og:title" content="Moxwell - Smart Insurance. Real Impact." />
-  <meta property="og:description" content="Mobile-first, AI-ready tools for insurers. Faster, smarter, seamless." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://moxwell.ca/" />
-  <meta name="twitter:card" content="summary_large_image" /><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moxwell - Smart Insurance. Real Impact.</title>
+  <!-- Icons / Fonts / Lib CSS -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    /* ============ Base & Resets ============ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
+      background: #ffffff;        /* keeps original background */
       color: #111;
       line-height: 1.6;
       scroll-behavior: smooth;
-      overflow-x: hidden;
+      overflow-x: auto;           /* allow horizontal panning when zoomed */
+      min-width: 320px;
     }
+    a { text-decoration: none; color: inherit; }
+    img, svg { max-width: 100%; height: auto; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
+    /* ============ Nav (mobile-friendly with toggle) ============ */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(15, 32, 39, 0.95);
-      padding: 14px 40px;
+      top: 0; left: 0; right: 0;
+      background: rgba(15, 32, 39, 0.95); /* keep */
+      padding: 12px 16px;                 /* tighter on mobile */
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       z-index: 1000;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
     }
-
     .nav-logo {
-      font-size: 1.6em;
+      font-size: 1.25rem;        /* was 1.6em; scales better on phones */
       font-weight: 700;
       color: #fff;
       letter-spacing: 1px;
     }
 
-    nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
+    /* Toggle button (hamburger) */
+    .nav-toggle{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
     }
+    .nav-toggle .bar{
+      width: 18px; height: 2px; background: #fff; border-radius: 2px; position: relative; display: block;
+    }
+    .nav-toggle .bar::before, .nav-toggle .bar::after{
+      content:""; position: absolute; left:0; width:18px; height:2px; background:#fff; border-radius:2px;
+    }
+    .nav-toggle .bar::before{ top:-6px; }
+    .nav-toggle .bar::after{ top:6px; }
 
+    /* Links container */
+    nav ul {
+      list-style: none;
+      display: none;                 /* hidden by default on mobile */
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(15, 32, 39, 0.98);
+      padding: 12px 16px 16px;
+      gap: 12px;
+      flex-direction: column;
+    }
+    nav ul.open { display: flex; }
     nav ul li a {
       color: #fff;
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
       position: relative;
+      padding: 8px 0;
     }
-
     nav ul li a::after {
       content: '';
       display: block;
       width: 0;
       height: 2px;
-      background: #ff6600;
+      background: #ff6600;          /* keep */
       transition: width 0.3s ease;
       position: absolute;
       bottom: -6px;
       left: 0;
     }
+    nav ul li a:hover::after { width: 100%; }
 
-    nav ul li a:hover::after {
-      width: 100%;
+    /* Desktop nav */
+    @media (min-width: 768px){
+      nav { padding: 14px 40px; }
+      .nav-toggle { display: none; }
+      nav ul {
+        position: static; display: flex; flex-direction: row;
+        background: transparent; padding: 0; gap: 30px;
+      }
     }
 
+    /* ============ Hero (keep gradient) ============ */
     header {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* keep */
       color: #fff;
-      padding: 160px 20px 120px;
+      padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px);
       text-align: center;
       position: relative;
     }
-
-    .logo {
-      max-width: 160px;
-      margin-bottom: 20px;
-    }
-
+    .logo { max-width: 160px; margin-bottom: 20px; }
     .brand-name {
-      font-size: 3.2em;
+      font-size: clamp(2rem, 6vw, 3.2rem);   /* responsive */
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
     .tagline {
-      font-size: 1.6em;
+      font-size: clamp(1rem, 4vw, 1.6rem);   /* responsive */
       color: #ccc;
       margin-top: 12px;
     }
-
     .cta {
       margin-top: 30px;
       display: inline-block;
-      background: #ff6600;
+      background: #ff6600;                  /* keep */
       color: #fff;
       padding: 14px 32px;
       border-radius: 10px;
       font-weight: 600;
-      font-size: 1.1em;
-      transition: all 0.3s ease;
+      font-size: 1.05rem;
+      transition: transform 0.15s ease, filter 0.15s ease;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
+    .cta:hover { background: #e65c00; transform: translateY(-1px); }
 
-    .cta:hover {
-      background: #e65c00;
-      transform: scale(1.05);
-    }
-
+    /* ============ Sections ============ */
     .section {
-      padding: 100px 20px 80px;
+      padding: clamp(56px, 10vw, 100px) 16px clamp(40px, 8vw, 80px);
       text-align: center;
       position: relative;
+      scroll-margin-top: 90px; /* avoid anchor hidden under fixed nav */
     }
-
     .section h2 {
-      font-size: 2.8em;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
       margin-bottom: 30px;
       color: #111;
       position: relative;
     }
-
     .section h2::after {
       content: '';
       width: 60px;
       height: 4px;
-      background: #ff6600;
+      background: #ff6600; /* keep */
       position: absolute;
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
     }
 
+    /* ============ Features grid ============ */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
-      max-width: 1200px;
-      margin: auto;
-      margin-top: 40px;
+      max-width: min(1200px, 100%);
+      margin: 40px auto 0;
     }
-
     .feature {
       padding: 40px 30px;
       border-radius: 12px;
-      background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
+      background: linear-gradient(to bottom right, #ffffff, #f8f8f8); /* keep */
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s, box-shadow 0.3s;
     }
+    .feature:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15); }
+    .feature img { width: 64px; margin-bottom: 20px; }
+    .feature h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .feature p { color: #555; font-size: 1rem; }
 
-    .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
-    }
-
-    .feature img {
-      width: 64px;
-      margin-bottom: 20px;
-    }
-
-    .feature h3 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      color: #555;
-      font-size: 1em;
-    }
-
+    /* ============ About ============ */
     .about p {
       max-width: 850px;
       margin: 20px auto;
       color: #555;
-      font-size: 1.15em;
+      font-size: 1.05rem;
       line-height: 1.8;
     }
-
     .highlights {
       display: flex;
       flex-wrap: wrap;
@@ -225,59 +204,49 @@
       gap: 30px;
       margin-top: 40px;
     }
-
     .highlight {
       flex: 1 1 300px;
       padding: 24px;
-      background: #ffffff;
+      background: #ffffff; /* keep */
       border: 1px solid #eee;
       border-radius: 12px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.06);
       transition: transform 0.3s ease;
+      text-align: left;
     }
+    .highlight:hover { transform: translateY(-6px); }
+    .highlight h4 { font-size: 1.1rem; margin-bottom: 10px; color: #222; display: flex; gap: .6rem; align-items: center; }
+    .highlight p { font-size: 1rem; color: #555; }
 
-    .highlight:hover {
-      transform: translateY(-6px);
-    }
+    /* ============ Contact ============ */
+    .contact { background: #f2f2f2; } /* keep */
+    .email-display { margin-top: 20px; font-size: 1.05rem; }
+    .email-display a { color: #007BFF; text-decoration: underline; }
 
-    .highlight h4 {
-      font-size: 1.3em;
-      margin-bottom: 10px;
-      color: #222;
-    }
-
-    .highlight p {
-      font-size: 1em;
-      color: #555;
-    }
-
-    .contact {
-      background: #f2f2f2;
-    }
-
-    .email-display {
-      margin-top: 20px;
-      font-size: 1.1em;
-    }
-
-    .email-display a {
-      color: #007BFF;
-      text-decoration: underline;
-    }
-
+    /* ============ Footer ============ */
     footer {
-      background: #111;
+      background: #111; /* keep */
       color: #bbb;
       text-align: center;
       padding: 40px 20px;
-      font-size: 0.95em;
+      font-size: 0.95rem;
+    }
+
+    /* Small-screen card tightening */
+    @media (max-width: 480px){
+      .feature { padding: 28px 22px; }
+      .feature h3 { font-size: 1.05rem; }
+      .feature p { font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-logo">MOXWELL</div>
-    <ul>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+    <ul id="navLinks">
       <li><a href="#features">Why Moxwell</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -314,19 +283,23 @@
 
   <section id="about" class="section about">
     <h2 data-aos="fade-up">About Moxwell</h2>
-    <p data-aos="fade-up" data-aos-delay="100">Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
-    <p data-aos="fade-up" data-aos-delay="200">With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
+    <p data-aos="fade-up" data-aos-delay="100">
+      Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.
+    </p>
+    <p data-aos="fade-up" data-aos-delay="200">
+      With deep expertise in P&amp;C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.
+    </p>
     <div class="highlights">
       <div class="highlight" data-aos="fade-right">
-        <h4><i class="fa-solid fa-shield-halved"></i> Data Privacy First</h4>
+        <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
         <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
       </div>
       <div class="highlight" data-aos="fade-up">
-        <h4><i class="fa-solid fa-chart-line"></i> Real-Time Analytics</h4>
+        <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
         <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
       </div>
       <div class="highlight" data-aos="fade-left">
-        <h4><i class="fa-solid fa-plug-circle-bolt"></i> Seamless Integration</h4>
+        <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
         <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
       </div>
     </div>
@@ -335,452 +308,58 @@
   <section id="contact" class="section contact">
     <h2 data-aos="fade-up">Contact Us</h2>
     <a class="cta" href="mailto:info@moxwell.ca" data-aos="zoom-in">Let's Talk</a>
-    <p class="email-display" data-aos="fade-up" data-aos-delay="100">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
+    <p class="email-display" data-aos="fade-up" data-aos-delay="100">
+      Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a>
+    </p>
   </section>
 
   <footer>
     &copy; 2025 Moxwell. Built with innovation in Canada.
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      once: false,
-      startEvent: 'load',
-      offset: 100,
-    });
-  </script>
-</body>
-</html>
-  <style>
-    :root{
-      /* Keep the original vibe/colors */
-      --brand-orange:#ff6600;
-      --nav-bg:rgba(15,32,39,.95);
-      --hero-grad: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-      --text:#111;
-      --muted:#555;
-      --paper:#ffffff;
-      --paper-2:#f2f2f2;
-      --ink-weak:#bbb;
-
-      /* Fluid type scale */
-      --fs-xs: clamp(.82rem, .8rem + .2vw, .9rem);
-      --fs-sm: clamp(.92rem, .9rem + .3vw, 1rem);
-      --fs-md: clamp(1rem, .98rem + .5vw, 1.15rem);
-      --fs-lg: clamp(1.25rem, 1.1rem + 1vw, 1.6rem);
-      --fs-xl: clamp(1.8rem, 1.5rem + 2.2vw, 3.2rem);
-      --radius: 12px;
-      --shadow-1: 0 6px 12px rgba(0,0,0,.12);
-      --shadow-2: 0 10px 30px rgba(0,0,0,.08);
-      --shadow-3: 0 16px 32px rgba(0,0,0,.15);
-
-      /* Layout tokens */
-      --gutter: 16px;
-      --section-py: clamp(56px, 10vw, 100px);
-      --section-pb: clamp(40px, 8vw, 80px);
-      --nav-h: 64px; /* base, grows on larger screens */
-    }
-
-    /* Base reset & quality-of-life */
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html { -webkit-text-size-adjust: 100%; color-scheme: light; }
-    body {
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:#fff; color:var(--text); line-height:1.6;
-      scroll-behavior:smooth;
-      overflow-x:auto;                  /* allow panning while zoomed */
-      min-width:320px;                  /* guard against too-narrow UA */
-    }
-    img, svg { max-width:100%; height:auto; }
-    a { color:inherit; text-decoration:none; }
-    button{ font:inherit; }
-    :focus-visible{ outline:2px dashed var(--brand-orange); outline-offset:3px; }
-    ::selection{ background:var(--brand-orange); color:#fff; }
-
-    /* Skip to content */
-    .skip-link{
-      position:fixed; left:var(--gutter); top:-100px; z-index:1100;
-      background:#000; color:#fff; padding:.6rem .9rem; border-radius:8px;
-      transition: top .2s ease;
-    }
-    .skip-link:focus{ top:var(--gutter); }
-
-    /* Layout wrappers are containers for container queries */
-    .container{
-      width: min(1200px, 100% - 2*var(--gutter));
-      margin-inline:auto;
-      container-type:inline-size;
-      container-name:content;
-    }
-
-    /* Fixed, blur nav with mobile menu */
-    nav{
-      position:sticky; top:0; left:0; right:0;
-      height:var(--nav-h);
-      background:var(--nav-bg);
-      backdrop-filter: blur(10px);
-      box-shadow:0 4px 10px rgba(0,0,0,.2);
-      z-index:1000;
-    }
-    .nav-inner{
-      height:100%;
-      display:flex; align-items:center; justify-content:space-between;
-      padding-inline:var(--gutter);
-      gap:12px;
-    }
-    .nav-logo{ font-weight:700; letter-spacing:1px; color:#fff; font-size:1.1rem; }
-    .nav-actions{ display:flex; align-items:center; gap:8px; }
-    .nav-toggle{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.15);
-      background:transparent; color:#fff; cursor:pointer; touch-action:manipulation;
-    }
-    .nav-toggle .bar{
-      width:18px; height:2px; background:#fff; border-radius:2px; display:block; position:relative;
-    }
-    .nav-toggle .bar::before,.nav-toggle .bar::after{
-      content:""; position:absolute; left:0; width:18px; height:2px; background:#fff; border-radius:2px;
-    }
-    .nav-toggle .bar::before{ top:-6px; }
-    .nav-toggle .bar::after{ top:6px; }
-
-    /* Menu panel */
-    .nav-menu{
-      position:fixed; inset:calc(var(--nav-h) + env(safe-area-inset-top)) 0 auto 0;
-      background:var(--nav-bg);
-      transform: translateY(-8px) scale(.98);
-      opacity:0; pointer-events:none;
-      transition: transform .18s ease, opacity .18s ease;
-      box-shadow:0 20px 40px rgba(0,0,0,.25);
-      border-bottom-left-radius:16px; border-bottom-right-radius:16px;
-      padding: 12px max(var(--gutter), env(safe-area-inset-left)) 16px max(var(--gutter), env(safe-area-inset-right));
-    }
-    .nav-menu.open{ transform:none; opacity:1; pointer-events:auto; }
-    .nav-list{
-      list-style:none; display:grid; gap:8px;
-      grid-template-columns: 1fr 1fr 1fr; /* wrap elegantly on large phones */
-    }
-    .nav-link{
-      color:#fff; font-weight:600; padding:10px 12px; border-radius:10px;
-      display:block; text-align:center;
-    }
-    .nav-link:hover{ background:rgba(255,255,255,.06); }
-    .nav-link[aria-current="true"]{ outline:2px solid var(--brand-orange); }
-
-    /* Elevate on larger screens */
-    @media (min-width:768px){
-      :root{ --nav-h: 72px; }
-      .nav-toggle{ display:none; }
-      .nav-menu{
-        position:static; inset:auto; background:transparent; box-shadow:none; border-radius:0;
-        transform:none; opacity:1; pointer-events:auto; padding:0;
-      }
-      .nav-list{ grid-auto-flow:column; grid-auto-columns:max-content; gap:24px; }
-      .nav-link{ padding:8px 0; position:relative; }
-      .nav-link::after{
-        content:''; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:var(--brand-orange);
-        width:0; margin-inline:auto; transition:width .2s ease;
-      }
-      .nav-link:hover::after{ width:100%; }
-    }
-
-    /* Hero */
-    header{
-      background: var(--hero-grad); /* keep original gradient */
-      color:#fff; text-align:center; position:relative;
-      padding: clamp(96px, 18vw, 160px) var(--gutter) clamp(56px, 10vw, 120px);
-      isolation:isolate;
-    }
-    .logo{ max-width:160px; margin: 10px auto 16px; aspect-ratio:1 / 1; object-fit:contain; }
-    .brand-name{ font-size:var(--fs-xl); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
-    .tagline{ font-size:var(--fs-lg); color:#ccc; margin-top:12px; }
-
-    .cta{
-      margin-top:30px; display:inline-block; background:var(--brand-orange); color:#fff;
-      padding:14px 32px; border-radius:10px; font-weight:700; font-size:1.05rem;
-      transition: transform .15s ease, filter .15s ease;
-      box-shadow: var(--shadow-1);
-      touch-action:manipulation;
-    }
-    .cta:hover{ transform: translateY(-1px); filter: brightness(.98); }
-    .cta:active{ transform: translateY(0); }
-
-    /* Sections */
-    .section{
-      padding: var(--section-py) var(--gutter) var(--section-pb);
-      position:relative; text-align:center;
-      scroll-margin-top: calc(var(--nav-h) + 12px); /* anchor offset under sticky nav */
-      content-visibility:auto; contain-intrinsic-size: 600px; /* perf hint */
-    }
-    .section h2{
-      font-size: clamp(1.6rem, 5vw, 2.6rem);
-      margin-bottom: 30px; color: var(--text); position:relative;
-    }
-    .section h2::after{
-      content:''; width:60px; height:4px; background:var(--brand-orange);
-      position:absolute; bottom:-10px; left:50%; transform:translateX(-50%);
-      border-radius:2px;
-    }
-
-    /* Features */
-    .feature-grid{
-      display:grid; gap:40px; margin-top:40px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      width:min(1200px, 100%); margin-inline:auto;
-      container-type:inline-size; container-name:features;
-    }
-    .feature{
-      padding: 34px 26px;
-      border-radius: var(--radius);
-      background: linear-gradient(to bottom right, var(--paper), #f8f8f8);
-      box-shadow: var(--shadow-2);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .feature:hover{ transform: translateY(-6px); box-shadow: var(--shadow-3); }
-    .feature img{ width:64px; margin-bottom:16px; }
-    .feature h3{ font-size:1.25rem; margin-bottom:8px; }
-    .feature p{ font-size:var(--fs-md); color:var(--muted); }
-
-    /* Tune card density at very narrow container widths */
-    @container features (max-width: 340px){
-      .feature{ padding: 24px 18px; }
-      .feature h3{ font-size:1.1rem; }
-      .feature p{ font-size:var(--fs-sm); }
-    }
-
-    /* About */
-    .about p{
-      max-width: 70ch; margin: 20px auto; color:var(--muted);
-      font-size: var(--fs-md); line-height:1.8;
-    }
-    .highlights{
-      display:grid; gap:30px; margin-top:40px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      width:min(1100px,100%); margin-inline:auto;
-    }
-    .highlight{
-      padding:24px; background:#fff; border:1px solid #eee; border-radius:var(--radius);
-      box-shadow:0 8px 18px rgba(0,0,0,.06);
-      transition: transform .18s ease;
-      text-align:left;
-    }
-    .highlight:hover{ transform: translateY(-6px); }
-    .highlight h4{ font-size:1.15rem; margin-bottom:8px; color:#222; display:flex; gap:.6rem; align-items:center; }
-    .highlight p{ font-size:var(--fs-sm); color:var(--muted); }
-
-    /* Contact */
-    .contact{ background: var(--paper-2); /* keep original */ }
-    .email-display{ margin-top:20px; font-size:var(--fs-md); }
-    .email-display a{ color:#007BFF; text-decoration:underline; }
-
-    /* Footer */
-    footer{
-      background:#111; color:var(--ink-weak);
-      text-align:center; padding:40px var(--gutter);
-      font-size:.95rem;
-    }
-
-    /* Micro helpers */
-    .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-
-    /* Responsive nav/logo scale upgrades */
-    @media (min-width:768px){
-      .nav-logo{ font-size:1.25rem; }
-      .brand-name{ letter-spacing:1.5px; }
-    }
-    @media (min-width:1024px){
-      .nav-logo{ font-size:1.5rem; }
-    }
-
-    /* Respect reduced motion + avoid zoom jank */
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; scroll-behavior:auto; }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <nav>
-    <div class="nav-inner container" role="navigation" aria-label="Primary">
-      <div class="nav-logo">MOXWELL</div>
-
-      <div class="nav-actions">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-          <span class="bar" aria-hidden="true"></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Menu lives outside inner to span full width on mobile -->
-    <div id="navMenu" class="nav-menu" hidden>
-      <ul class="nav-list container" role="list">
-        <li><a class="nav-link" href="#features">Why Moxwell</a></li>
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <header>
-    <div class="container">
-      <img src="logo.png"
-           srcset="logo.png 1x, logo@2x.png 2x"
-           alt="Moxwell Logo"
-           class="logo"
-           loading="eager"
-           decoding="async"
-           data-aos="fade-down" />
-      <h1 class="brand-name" data-aos="fade-up">MOXWELL</h1>
-      <p class="tagline" data-aos="fade-up" data-aos-delay="100">Smart Insurance. Real Impact.</p>
-      <a class="cta" href="#contact" data-aos="zoom-in" data-aos-delay="200">Get in Touch</a>
-    </div>
-  </header>
-
-  <main id="main">
-    <section id="features" class="section">
-      <div class="container">
-        <h2 data-aos="fade-up">Why Moxwell?</h2>
-        <div class="feature-grid" data-aos="fade-up" data-aos-delay="50">
-          <article class="feature" tabindex="0">
-            <img src="cloud-icon.svg" alt="" role="presentation" loading="lazy" decoding="async" />
-            <h3>Cloud-Native</h3>
-            <p>Built to scale securely and flexibly with modern cloud infrastructure.</p>
-          </article>
-          <article class="feature" tabindex="0">
-            <img src="ai-icon.svg" alt="" role="presentation" loading="lazy" decoding="async" />
-            <h3>AI-Ready</h3>
-            <p>Transform raw data into predictive insights for better decision-making.</p>
-          </article>
-          <article class="feature" tabindex="0">
-            <img src="mobile-icon.svg" alt="" role="presentation" loading="lazy" decoding="async" />
-            <h3>Mobile-First</h3>
-            <p>Delightful digital experiences across mobile and web interfaces.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2 data-aos="fade-up">About Moxwell</h2>
-        <p data-aos="fade-up" data-aos-delay="100">
-          Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire,
-          we develop scalable tools that transform how insurers interact with customers and operate internally.
-        </p>
-        <p data-aos="fade-up" data-aos-delay="200">
-          With deep expertise in P&amp;C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers
-          deliver faster, smarter, and more personalized services.
-        </p>
-
-        <div class="highlights" data-aos="fade-up" data-aos-delay="100">
-          <div class="highlight">
-            <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-            <p>We enforce strong encryption and role-based access to keep sensitive data safe.</p>
-          </div>
-          <div class="highlight">
-            <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-            <p>Operational dashboards and alerts drive measurable outcomes, not just vanity metrics.</p>
-          </div>
-          <div class="highlight">
-            <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
-            <p>Connect to CRMs and core platforms with robust APIs and event-driven pipelines.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="container">
-        <h2 data-aos="fade-up">Contact Us</h2>
-        <a class="cta" href="mailto:info@moxwell.ca" data-aos="zoom-in">Let's Talk</a>
-        <p class="email-display" data-aos="fade-up" data-aos-delay="100">
-          Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p><span id="year"></span> &copy; Moxwell. Built with innovation in Canada.</p>
-  </footer>
-
-  <!-- JSON-LD: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Moxwell",
-    "url":"https://moxwell.ca/",
-    "logo":"https://moxwell.ca/logo.png",
-    "sameAs":[]
-  }
-  </script>
-
-  <!-- Scripts -->
+  <!-- Lib JS -->
   <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
 
-    // Mobile menu
-    const toggle = document.getElementById('navToggle');
-    const menu   = document.getElementById('navMenu');
-    const links  = menu.querySelectorAll('.nav-link');
-
-    const setMenuState = (open) => {
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      menu.hidden = !open;
-      menu.classList.toggle('open', open);
-      document.body.style.overflowY = open ? 'hidden' : '';
-    };
-
-    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setMenuState(false);
-    });
-    links.forEach(a => a.addEventListener('click', () => setMenuState(false)));
-
-    // Active nav link on scroll
-    const sections = [...document.querySelectorAll('section[id]')];
-    const navMap = Object.fromEntries([...document.querySelectorAll('.nav-link')].map(a => [a.getAttribute('href').slice(1), a]));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          for (const k in navMap) navMap[k].removeAttribute('aria-current');
-          if (navMap[id]) navMap[id].setAttribute('aria-current', 'true');
-        }
-      });
-    }, { rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 20}px 0px -60% 0px`, threshold: .2 });
-    sections.forEach(sec => io.observe(sec));
-
-    // AOS init — avoid jank on small screens & reduced motion
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    AOS.init({
-      once: true,
-      offset: 100,
-      startEvent: 'load',
-      disable: reduced || window.innerWidth < 768
-    });
-
-    // Smooth hash navigation with offset awareness (for browsers not honoring scroll-margin-top)
-    function smoothToHash(){
-      if (location.hash) {
-        const el = document.querySelector(location.hash);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function setMenu(open){
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      navLinks.classList.toggle('open', open);
+      if (open) {
+        // prevent background scroll when menu is open
+        document.body.style.overflowY = 'hidden';
+      } else {
+        document.body.style.overflowY = '';
       }
     }
-    window.addEventListener('hashchange', smoothToHash);
 
-    // Guard: ensure no accidental horizontal overflow from wide content
-    const watchOverflow = () => {
-      document.documentElement.style.setProperty('--vw', `${window.innerWidth}px`);
-    };
-    watchOverflow();
-    window.addEventListener('resize', watchOverflow, { passive:true });
+    navToggle.addEventListener('click', () => {
+      const open = !navLinks.classList.contains('open');
+      setMenu(open);
+    });
+
+    // Close menu after clicking a link (mobile)
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
+
+    // AOS: re-animate on every scroll down/up, and on refresh
+    window.addEventListener('load', () => {
+      if (!window.AOS) return;
+      AOS.init({
+        once: false,            // animate every time it enters viewport
+        mirror: true,           // also animate on scroll-up
+        offset: 100,
+        duration: 650,
+        easing: 'ease-out-cubic',
+        // Respect reduced motion
+        disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      });
+      AOS.refresh();
+    });
   </script>
 </body>
 </html>
