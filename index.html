@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
   <title>Moxwell - Smart Insurance. Real Impact.</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* Base reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; } /* iOS text autosizing control */
 
     body {
       font-family: 'Inter', sans-serif;
@@ -21,21 +23,21 @@
       color: #111;
       line-height: 1.6;
       scroll-behavior: smooth;
-      overflow-x: hidden;
+      /* allow horizontal panning when zoomed */
+      overflow-x: auto; /* was: hidden */
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
+    /* Responsive media */
+    img, svg { max-width: 100%; height: auto; }
+
+    /* Fixed nav */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       background: rgba(15, 32, 39, 0.95);
-      padding: 14px 40px;
+      padding: 12px 16px; /* mobile-first */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -45,7 +47,7 @@
     }
 
     .nav-logo {
-      font-size: 1.6em;
+      font-size: 1.25rem; /* mobile-first size */
       font-weight: 700;
       color: #fff;
       letter-spacing: 1px;
@@ -53,8 +55,11 @@
 
     nav ul {
       display: flex;
-      gap: 30px;
+      gap: 16px;
       list-style: none;
+      flex-wrap: wrap;         /* allow wrapping on small widths */
+      justify-content: flex-end;
+      overflow: hidden;        /* hide tiny underline overflows when wrapping */
     }
 
     nav ul li a {
@@ -76,14 +81,13 @@
       left: 0;
     }
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
+    nav ul li a:hover::after { width: 100%; }
 
+    /* Header / Hero */
     header {
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      padding: 160px 20px 120px;
+      padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px);
       text-align: center;
       position: relative;
     }
@@ -94,14 +98,14 @@
     }
 
     .brand-name {
-      font-size: 3.2em;
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .tagline {
-      font-size: 1.6em;
+      font-size: clamp(1rem, 3.8vw, 1.6rem);
       color: #ccc;
       margin-top: 12px;
     }
@@ -119,19 +123,18 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .cta:hover {
-      background: #e65c00;
-      transform: scale(1.05);
-    }
+    .cta:hover { background: #e65c00; transform: scale(1.05); }
 
+    /* Sections */
     .section {
-      padding: 100px 20px 80px;
+      padding: clamp(56px, 10vw, 100px) 16px clamp(40px, 8vw, 80px);
       text-align: center;
       position: relative;
+      scroll-margin-top: 90px; /* prevent anchor content being hidden under fixed nav */
     }
 
     .section h2 {
-      font-size: 2.8em;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
       margin-bottom: 30px;
       color: #111;
       position: relative;
@@ -148,13 +151,13 @@
       transform: translateX(-50%);
     }
 
+    /* Features grid */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
-      max-width: 1200px;
-      margin: auto;
-      margin-top: 40px;
+      max-width: min(1200px, 100%);
+      margin: 40px auto 0;
     }
 
     .feature {
@@ -170,21 +173,11 @@
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
     }
 
-    .feature img {
-      width: 64px;
-      margin-bottom: 20px;
-    }
+    .feature img { width: 64px; margin-bottom: 20px; }
+    .feature h3 { font-size: 1.4em; margin-bottom: 10px; }
+    .feature p  { color: #555; font-size: 1em; }
 
-    .feature h3 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      color: #555;
-      font-size: 1em;
-    }
-
+    /* About */
     .about p {
       max-width: 850px;
       margin: 20px auto;
@@ -211,41 +204,37 @@
       transition: transform 0.3s ease;
     }
 
-    .highlight:hover {
-      transform: translateY(-6px);
-    }
+    .highlight:hover { transform: translateY(-6px); }
 
-    .highlight h4 {
-      font-size: 1.3em;
-      margin-bottom: 10px;
-      color: #222;
-    }
+    .highlight h4 { font-size: 1.3em; margin-bottom: 10px; color: #222; }
+    .highlight p  { font-size: 1em; color: #555; }
 
-    .highlight p {
-      font-size: 1em;
-      color: #555;
-    }
+    /* Contact */
+    .contact { background: #f2f2f2; }
+    .email-display { margin-top: 20px; font-size: 1.1em; }
+    .email-display a { color: #007BFF; text-decoration: underline; }
 
-    .contact {
-      background: #f2f2f2;
-    }
-
-    .email-display {
-      margin-top: 20px;
-      font-size: 1.1em;
-    }
-
-    .email-display a {
-      color: #007BFF;
-      text-decoration: underline;
-    }
-
+    /* Footer */
     footer {
       background: #111;
       color: #bbb;
       text-align: center;
       padding: 40px 20px;
       font-size: 0.95em;
+    }
+
+    /* Tighter cards/text on very small screens */
+    @media (max-width: 480px) {
+      .feature { padding: 28px 22px; }
+      .feature h3 { font-size: 1.15rem; }
+      .feature p  { font-size: 0.95rem; }
+    }
+
+    /* Roomier nav on larger screens */
+    @media (min-width: 768px) {
+      nav { padding: 14px 40px; }
+      nav ul { gap: 30px; }
+      .nav-logo { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -289,8 +278,14 @@
 
   <section id="about" class="section about">
     <h2 data-aos="fade-up">About Moxwell</h2>
-    <p data-aos="fade-up" data-aos-delay="100">Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
-    <p data-aos="fade-up" data-aos-delay="200">With deep expertise in P&C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
+    <p data-aos="fade-up" data-aos-delay="100">
+      Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire,
+      we develop scalable tools that transform how insurers interact with customers and operate internally.
+    </p>
+    <p data-aos="fade-up" data-aos-delay="200">
+      With deep expertise in P&amp;C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers
+      deliver faster, smarter, and more personalized services.
+    </p>
     <div class="highlights">
       <div class="highlight" data-aos="fade-right">
         <h4><i class="fa-solid fa-shield-halved"></i> Data Privacy First</h4>
@@ -310,7 +305,9 @@
   <section id="contact" class="section contact">
     <h2 data-aos="fade-up">Contact Us</h2>
     <a class="cta" href="mailto:info@moxwell.ca" data-aos="zoom-in">Let's Talk</a>
-    <p class="email-display" data-aos="fade-up" data-aos-delay="100">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
+    <p class="email-display" data-aos="fade-up" data-aos-delay="100">
+      Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a>
+    </p>
   </section>
 
   <footer>
@@ -320,9 +317,10 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
-      once: false,
-      startEvent: 'load',
+      once: true,
       offset: 100,
+      startEvent: 'load',
+      disable: window.innerWidth < 768 // turn off animations on small screens to avoid zoom jank
     });
   </script>
 </body>
