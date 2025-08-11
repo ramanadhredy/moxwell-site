@@ -1,301 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta -->
+  <!-- ===== Meta ===== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Moxwell - Smart Insurance. Real Impact.</title>
+  <meta name="description" content="Moxwell builds cloud-native, AI-ready, mobile-first tools that help insurers move faster with real-time analytics and seamless integrations." />
 
-  <!-- Icons / Fonts -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- ===== Icons / Fonts ===== -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
+  <!-- ===== Open Graph / Twitter ===== -->
+  <meta property="og:title" content="Moxwell - Smart Insurance. Real Impact." />
+  <meta property="og:description" content="Cloud-native, AI-ready, mobile-first solutions for modern insurers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
+    /* =========================
+       Design tokens (keeps colors)
+       ========================= */
+    :root{
+      --bg-body: #ffffff;           /* keep original */
+      --text-strong: #111;
+      --text-muted: #555;
+      --surface: #ffffff;           /* cards */
+      --surface-alt: #f2f2f2;       /* contact section */
+      --accent: #ff6600;            /* keep orange */
+      --nav-bg: rgba(15,32,39,.95); /* keep nav tone */
+      --hero-grad-a: #0f2027;       /* keep gradient */
+      --hero-grad-b: #203a43;
+      --hero-grad-c: #2c5364;
+      --radius-lg: 12px;
+      --shadow-sm: 0 4px 10px rgba(0,0,0,.08);
+      --shadow-md: 0 10px 30px rgba(0,0,0,.10);
+      --shadow-lg: 0 16px 32px rgba(0,0,0,.15);
+      --container: min(1120px, 92vw);
+    }
+
     /* ===== Base & Resets ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: #ffffff;   /* keep original background colors */
-      color: #111;
+      background: var(--bg-body);
+      color: var(--text-strong);
       line-height: 1.6;
       scroll-behavior: smooth;
-      overflow-x: auto;      /* allow panning when pinch-zoomed */
+      overflow-x: hidden;
       min-width: 320px;
     }
-    img, svg { max-width: 100%; height: auto; }
+    img, svg { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 
-    /* ===== Mobile-first sticky nav with toggle ===== */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(15, 32, 39, 0.95); /* keep */
-      padding: 12px 16px;
-      display: flex; align-items: center; justify-content: space-between;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    /* Utility */
+    .container { width: var(--container); margin-inline: auto; }
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+    /* ===== Skip link ===== */
+    .skip-link{ position:absolute; inset-inline-start:8px; inset-block-start:-40px; background:#000; color:#fff; padding:8px 12px; border-radius:8px; transition:transform .2s ease; transform: translateY(-12px); }
+    .skip-link:focus{ inset-block-start:8px; transform:none; }
+
+    /* ===== Sticky nav with desktop & mobile ===== */
+    header.site-nav{
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
+      box-shadow: 0 4px 10px rgba(0,0,0,.2);
     }
-    .nav-logo {
-      font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: 1px;
-    }
-    .nav-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
+    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; }
+    .brand { display:flex; align-items:center; gap:.6rem; color:#fff; font-weight:700; letter-spacing:.5px; }
+    .brand img{ width:28px; height:28px; }
+    .nav-toggle{
+      display: inline-flex; align-items:center; justify-content:center;
       width: 42px; height: 42px; border-radius: 10px;
       background: transparent; border: 1px solid rgba(255,255,255,.15);
-      color: #fff; cursor: pointer;
+      color:#fff; cursor:pointer;
     }
-    .nav-toggle .bar {
-      width: 18px; height: 2px; background: #fff; border-radius: 2px; position: relative; display: block;
-    }
-    .nav-toggle .bar::before, .nav-toggle .bar::after {
-      content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: #fff; border-radius: 2px;
-    }
-    .nav-toggle .bar::before { top: -6px; }
-    .nav-toggle .bar::after  { top:  6px; }
+    .nav-toggle .bar{ width:18px; height:2px; background:#fff; border-radius:2px; position:relative; }
+    .nav-toggle .bar::before, .nav-toggle .bar::after{ content:""; position:absolute; left:0; width:18px; height:2px; background:#fff; border-radius:2px; }
+    .nav-toggle .bar::before{ top:-6px; } .nav-toggle .bar::after{ top:6px; }
 
-    nav ul {
-      list-style: none;
-      position: absolute; top: 100%; left: 0; right: 0;
-      background: rgba(15, 32, 39, 0.98); /* keep */
-      padding: 12px 16px 16px;
-      display: none; flex-direction: column; gap: 12px;
-    }
-    nav ul.open { display: flex; }
-    nav ul li a {
-      color: #fff; font-weight: 600; position: relative; padding: 8px 0;
-    }
-    nav ul li a::after {
-      content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
-      background: #ff6600; transition: width .3s ease; /* keep orange */
-    }
-    nav ul li a:hover::after { width: 100%; }
+    nav.primary{ position: fixed; inset-inline:0; top:56px; background: rgba(15,32,39,0.98); display:none; }
+    nav.primary.open{ display:block; }
+    .nav-list{ list-style:none; display:flex; flex-direction:column; gap:12px; padding:12px 16px 20px; }
+    .nav-link{ color:#fff; font-weight:600; position:relative; padding:8px 0; }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--accent); transition:width .3s ease; }
+    .nav-link:hover::after{ width:100%; }
 
-    /* Desktop nav */
-    @media (min-width: 768px) {
-      nav { padding: 14px 40px; }
-      .nav-toggle { display: none; }
-      nav ul { position: static; display: flex; flex-direction: row; background: transparent; padding: 0; gap: 30px; }
+    @media (min-width: 768px){
+      .nav-wrap{ padding:14px 32px; }
+      .nav-toggle{ display:none; }
+      nav.primary{ position:static; display:block; background:transparent; }
+      .nav-list{ flex-direction:row; align-items:center; gap:28px; padding:0; }
     }
 
-    /* ===== Hero (keep original gradient) ===== */
-    header {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* keep */
-      color: #fff;
-      padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px);
-      text-align: center; position: relative;
+    /* ===== Hero (keep gradient) ===== */
+    section.hero{
+      background: linear-gradient(135deg, var(--hero-grad-a), var(--hero-grad-b), var(--hero-grad-c));
+      color:#fff; text-align:center; position:relative; isolation:isolate;
     }
-    .logo { max-width: 160px; margin-bottom: 20px; }
-    .brand-name {
-      font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    .tagline { font-size: clamp(1rem, 4vw, 1.6rem); color: #ccc; margin-top: 12px; }
-    .cta {
-      margin-top: 30px; display: inline-block; background: #ff6600; /* keep */
-      color: #fff; padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 1.05rem;
-      transition: transform .15s ease, filter .15s ease; box-shadow: 0 6px 12px rgba(0,0,0,.2);
-    }
-    .cta:hover { background: #e65c00; transform: translateY(-1px); }
+    .hero-inner{ padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px); }
+    .logo{ max-width: 160px; margin: 0 auto 20px; }
+    .brand-name{ font-size: clamp(2rem, 6vw, 3.2rem); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+    .tagline{ font-size: clamp(1rem, 4vw, 1.6rem); color:#ddd; margin-top:12px; }
+    .cta{ margin-top:28px; display:inline-block; background:var(--accent); color:#fff; padding:14px 32px; border-radius:10px; font-weight:600; font-size:1.05rem; box-shadow: 0 6px 12px rgba(0,0,0,.2); transition: transform .15s ease, filter .15s ease; }
+    .cta:hover{ transform: translateY(-1px); filter: brightness(.98); }
 
     /* ===== Sections ===== */
-    .section {
-      padding: clamp(56px, 10vw, 100px) 16px clamp(40px, 8vw, 80px);
-      text-align: center; position: relative;
-      scroll-margin-top: 90px; /* avoid fixed-nav overlap on anchor jump */
-    }
-    .section h2 {
-      font-size: clamp(1.6rem, 5vw, 2.8rem);
-      margin-bottom: 30px; color: #111; position: relative;
-    }
-    .section h2::after {
-      content: ''; width: 60px; height: 4px; background: #ff6600; /* keep */
-      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-    }
+    section.block{ padding: clamp(56px, 10vw, 100px) 0 clamp(40px, 8vw, 80px); scroll-margin-top: 96px; }
+    .section-head{ text-align:center; }
+    .section-head h2{ font-size: clamp(1.6rem, 5vw, 2.6rem); margin-bottom: 14px; color: var(--text-strong); position: relative; display:inline-block; }
+    .section-head h2::after{ content:""; width:60px; height:4px; background:var(--accent); position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); }
+    .section-sub{ max-width: 760px; margin: 18px auto 0; color: var(--text-muted); font-size:1.05rem; }
 
     /* ===== Features grid ===== */
-    .feature-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px; max-width: min(1200px, 100%); margin: 40px auto 0;
-    }
-    .feature {
-      padding: 40px 30px; border-radius: 12px;
-      background: linear-gradient(to bottom right, #ffffff, #f8f8f8); /* keep */
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform .3s, box-shadow .3s;
-    }
-    .feature:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,0.15); }
-    .feature img { width: 64px; margin-bottom: 20px; }
-    .feature h3 { font-size: 1.2rem; margin-bottom: 10px; }
-    .feature p { color: #555; font-size: 1rem; }
+    .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; width: var(--container); margin: 40px auto 0; }
+    .feature{ padding: 36px 28px; border-radius: var(--radius-lg); background: linear-gradient(to bottom right, #ffffff, #f8f8f8); box-shadow: var(--shadow-md); transition: transform .25s ease, box-shadow .25s ease; }
+    .feature:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .feature img{ width:64px; margin-bottom: 16px; }
+    .feature h3{ font-size:1.15rem; margin-bottom:8px; }
+    .feature p{ color: var(--text-muted); font-size:1rem; }
 
-    /* ===== About ===== */
-    .about p {
-      max-width: 850px; margin: 20px auto; color: #555;
-      font-size: 1.05rem; line-height: 1.8;
-    }
-    .highlights {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;
-    }
-    .highlight {
-      flex: 1 1 300px; padding: 24px; text-align: left;
-      background: #ffffff; border: 1px solid #eee; border-radius: 12px; /* keep */
-      box-shadow: 0 8px 18px rgba(0,0,0,0.06); transition: transform .3s ease;
-    }
-    .highlight:hover { transform: translateY(-6px); }
-    .highlight h4 { font-size: 1.1rem; margin-bottom: 10px; color: #222; display: flex; gap: .6rem; align-items: center; }
-    .highlight p { font-size: 1rem; color: #555; }
+    /* ===== About / Highlights ===== */
+    .about .copy{ width: var(--container); margin: 20px auto 0; display:grid; gap:14px; }
+    .about .copy p{ color: var(--text-muted); font-size:1.05rem; line-height:1.8; }
+    .highlights{ width: var(--container); margin: 32px auto 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .highlight{ background: var(--surface); border:1px solid #eee; border-radius: var(--radius-lg); padding: 22px; text-align:left; box-shadow: var(--shadow-sm); transition: transform .25s ease; }
+    .highlight:hover{ transform: translateY(-6px); }
+    .highlight h4{ font-size:1.05rem; margin-bottom:8px; color:#222; display:flex; gap:.6rem; align-items:center; }
+    .highlight p{ color: var(--text-muted); }
 
     /* ===== Contact ===== */
-    .contact { background: #f2f2f2; }            /* keep */
-    .email-display { margin-top: 20px; font-size: 1.05rem; }
-    .email-display a { color: #007BFF; text-decoration: underline; }
+    section.contact{ background: var(--surface-alt); }
+    .contact .actions{ margin-top: 22px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .email-display{ margin-top: 14px; font-size:1.02rem; }
+    .email-display a{ color:#007BFF; text-decoration: underline; }
 
     /* ===== Footer ===== */
-    footer { background: #111; color: #bbb; text-align: center; padding: 40px 20px; font-size: .95rem; } /* keep */
+    footer.site-footer{ background:#111; color:#bbb; text-align:center; padding: 36px 16px; font-size:.95rem; }
 
     /* ===== Small-screen card tightening ===== */
-    @media (max-width: 480px) {
-      .feature { padding: 28px 22px; }
-      .feature h3 { font-size: 1.05rem; }
-      .feature p  { font-size: 0.95rem; }
+    @media (max-width: 480px){
+      .feature{ padding: 28px 22px; }
+      .feature h3{ font-size: 1.05rem; }
+      .feature p{ font-size: .95rem; }
     }
 
     /* ===== Floating animations (both directions, repeatable) ===== */
-    @keyframes float-in-up {
-      from { opacity: 0; transform: translate3d(0, 24px, 0); }
-      to   { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
-    @keyframes float-in-down {
-      from { opacity: 0; transform: translate3d(0, -24px, 0); }
-      to   { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
-
-    /* Elements that should float get this base class */
-    .float { opacity: 0; will-change: transform, opacity; }
-
-    /* Applied dynamically depending on scroll direction */
+    @keyframes float-in-up { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+    @keyframes float-in-down{ from { opacity: 0; transform: translate3d(0,-24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+    .float{ opacity: 0; will-change: transform, opacity; }
     .float.in-up   { animation: float-in-up   650ms ease-out both; }
     .float.in-down { animation: float-in-down 650ms ease-out both; }
 
     /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .float { opacity: 1 !important; animation: none !important; transform: none !important; }
+    @media (prefers-reduced-motion: reduce){
+      .float{ opacity: 1 !important; animation: none !important; transform: none !important; }
+      .cta, .feature, .highlight{ transition:none; }
     }
+
+    /* ===== Back-to-top FAB ===== */
+    .to-top{ position: fixed; right: 16px; bottom: 16px; z-index: 999; opacity:0; visibility:hidden; transform: translateY(10px); transition: all .2s ease; }
+    .to-top.show{ opacity:1; visibility:visible; transform:none; }
+    .to-top a{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:#fff; border:1px solid #eee; box-shadow: var(--shadow-sm); }
+    .to-top a:hover{ box-shadow: var(--shadow-md); }
   </style>
+
+  <!-- ===== Structured Data ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Moxwell",
+    "url": "https://www.moxwell.ca",
+    "logo": "https://www.moxwell.ca/logo.png",
+    "email": "info@moxwell.ca",
+    "sameAs": [
+      "https://www.linkedin.com/company/moxwell"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <nav>
-    <div class="nav-logo">MOXWELL</div>
-    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-      <span class="bar" aria-hidden="true"></span>
-    </button>
-    <ul id="navLinks">
-      <li><a href="#features">Why Moxwell</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header>
-    <img src="logo.png" alt="Moxwell Logo" class="logo float" />
-    <h1 class="brand-name float">MOXWELL</h1>
-    <p class="tagline float">Smart Insurance. Real Impact.</p>
-    <a class="cta float" href="#contact">Get in Touch</a>
+  <!-- ===== Navigation ===== -->
+  <header class="site-nav" role="banner">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Moxwell home">
+        <img src="logo.png" alt="Moxwell logo" width="28" height="28" loading="eager" decoding="sync" />
+        <span>MOXWELL</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+
+      <nav id="primaryNav" class="primary" role="navigation">
+        <ul class="nav-list" id="navList">
+          <li><a class="nav-link" href="#features">Why Moxwell</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section id="features" class="section features">
-    <h2 class="float">Why Moxwell?</h2>
-    <div class="feature-grid">
-      <div class="feature float">
-        <img src="cloud-icon.svg" alt="Cloud-Native" />
-        <h3>Cloud-Native</h3>
-        <p>Built to scale securely and flexibly with modern cloud infrastructure.</p>
-      </div>
-      <div class="feature float">
-        <img src="ai-icon.svg" alt="AI-Ready" />
-        <h3>AI-Ready</h3>
-        <p>Transform raw data into predictive insights for better decision-making.</p>
-      </div>
-      <div class="feature float">
-        <img src="mobile-icon.svg" alt="Mobile-First" />
-        <h3>Mobile-First</h3>
-        <p>Delightful digital experiences across mobile and web interfaces.</p>
-      </div>
+  <!-- ===== Hero ===== -->
+  <section id="home" class="hero" aria-label="Hero">
+    <div class="container hero-inner">
+      <img src="logo.png" alt="Moxwell Logo" class="logo float" width="160" height="160" loading="eager" decoding="sync" />
+      <h1 class="brand-name float">MOXWELL</h1>
+      <p class="tagline float">Smart Insurance. Real Impact.</p>
+      <a class="cta float" href="#contact">Get in Touch</a>
     </div>
   </section>
 
-  <section id="about" class="section about">
-    <h2 class="float">About Moxwell</h2>
-    <p class="float">
-      Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire,
-      we develop scalable tools that transform how insurers interact with customers and operate internally.
-    </p>
-    <p class="float">
-      With deep expertise in P&amp;C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers
-      deliver faster, smarter, and more personalized services.
-    </p>
-    <div class="highlights">
-      <div class="highlight float">
-        <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-        <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
+  <main id="main">
+    <!-- ===== Features ===== -->
+    <section id="features" class="block" aria-labelledby="features-title">
+      <div class="section-head container">
+        <h2 id="features-title" class="float">Why Moxwell?</h2>
+        <p class="section-sub float">Cloud-native, AI-ready, and mobile-first — built to help insurers scale securely and make faster, smarter decisions.</p>
       </div>
-      <div class="highlight float">
-        <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-        <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
-      </div>
-      <div class="highlight float">
-        <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
-        <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact" class="section contact">
-    <h2 class="float">Contact Us</h2>
-    <a class="cta float" href="mailto:info@moxwell.ca">Let's Talk</a>
-    <p class="email-display float">
-      Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a>
-    </p>
-  </section>
+      <div class="feature-grid">
+        <article class="feature float">
+          <img src="cloud-icon.svg" alt="Cloud-Native" loading="lazy" decoding="async" />
+          <h3>Cloud-Native</h3>
+          <p>Built to scale securely and flexibly with modern cloud infrastructure.</p>
+        </article>
+        <article class="feature float">
+          <img src="ai-icon.svg" alt="AI-Ready" loading="lazy" decoding="async" />
+          <h3>AI-Ready</h3>
+          <p>Transform raw data into predictive insights for better decision-making.</p>
+        </article>
+        <article class="feature float">
+          <img src="mobile-icon.svg" alt="Mobile-First" loading="lazy" decoding="async" />
+          <h3>Mobile-First</h3>
+          <p>Delightful digital experiences across mobile and web interfaces.</p>
+        </article>
+      </div>
+    </section>
 
-  <footer>
+    <!-- ===== About ===== -->
+    <section id="about" class="block about" aria-labelledby="about-title">
+      <div class="section-head container">
+        <h2 id="about-title" class="float">About Moxwell</h2>
+      </div>
+      <div class="copy container">
+        <p class="float">Moxwell is reimagining insurance through mobile-first, data-driven innovation. Inspired by industry leaders like Guidewire, we develop scalable tools that transform how insurers interact with customers and operate internally.</p>
+        <p class="float">With deep expertise in P&amp;C systems, our team builds AI-ready platforms and seamless digital workflows that help insurers deliver faster, smarter, and more personalized services.</p>
+      </div>
+
+      <div class="highlights">
+        <article class="highlight float">
+          <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
+          <p>We prioritize client confidentiality with best-in-class encryption and role-based access.</p>
+        </article>
+        <article class="highlight float">
+          <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
+          <p>Instant dashboards provide actionable insights to boost business outcomes.</p>
+        </article>
+        <article class="highlight float">
+          <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
+          <p>Connect effortlessly with existing systems — CRMs, core insurance platforms, and more.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="block contact" aria-labelledby="contact-title">
+      <div class="section-head container">
+        <h2 id="contact-title" class="float">Contact Us</h2>
+        <p class="section-sub float">We'd love to learn about your goals and show how Moxwell can help.</p>
+        <div class="actions">
+          <a class="cta float" href="mailto:info@moxwell.ca">Let's Talk</a>
+          <a class="cta float" href="#home" aria-label="Back to top via hero">Back to Top</a>
+        </div>
+        <p class="email-display float">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" role="contentinfo">
     &copy; 2025 Moxwell. Built with innovation in Canada.
   </footer>
 
+  <!-- Back-to-top FAB -->
+  <div class="to-top" id="toTop" aria-hidden="true">
+    <a href="#home" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+  </div>
+
   <script>
-    /* ===== Mobile menu toggle ===== */
+    /* ===== Mobile menu toggle with focus trap ===== */
     const navToggle = document.getElementById('navToggle');
-    const navLinks  = document.getElementById('navLinks');
+    const primaryNav = document.getElementById('primaryNav');
+    const navList   = document.getElementById('navList');
+
+    const focusablesSelector = 'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let previousActiveEl = null;
 
     function setMenu(open){
       navToggle.setAttribute('aria-expanded', String(open));
       navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      navLinks.classList.toggle('open', open);
+      primaryNav.classList.toggle('open', open);
       document.body.style.overflowY = open ? 'hidden' : '';
+      primaryNav.setAttribute('aria-hidden', String(!open));
+
+      if(open){
+        previousActiveEl = document.activeElement;
+        const firstFocus = primaryNav.querySelector(focusablesSelector);
+        firstFocus && firstFocus.focus();
+      }else if(previousActiveEl){
+        previousActiveEl.focus();
+      }
     }
-    navToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-    /* ===== Reusable float animations (both ways, repeat every pass) =====
-       - Adds .in-up when scrolling down into view
-       - Adds .in-down when scrolling up into view
-       - Removes class when leaving so it can re-trigger next time
-    */
+    navToggle.addEventListener('click', () => setMenu(!primaryNav.classList.contains('open')));
+    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    // Trap focus when open
+    document.addEventListener('keydown', (e) => {
+      if(!primaryNav.classList.contains('open')) return;
+      if(e.key === 'Escape'){ setMenu(false); }
+      if(e.key === 'Tab'){
+        const focusables = primaryNav.querySelectorAll(focusablesSelector);
+        const first = focusables[0];
+        const last  = focusables[focusables.length - 1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+
+    /* ===== Reusable float animations (both ways, repeat every pass) ===== */
     let lastScrollY = window.scrollY;
-
     const io = new IntersectionObserver((entries) => {
       const scrollingDown = window.scrollY >= lastScrollY;
       entries.forEach(entry => {
         const el = entry.target;
         if (entry.isIntersecting) {
-          // Reset any previous animation so it can restart
           el.classList.remove('in-up', 'in-down');
-          void el.offsetWidth; // reflow to restart animation
+          void el.offsetWidth; // restart animation
           el.classList.add(scrollingDown ? 'in-up' : 'in-down');
         } else {
-          // Prepare element to animate again next time
           el.classList.remove('in-up', 'in-down');
         }
       });
@@ -304,7 +365,7 @@
 
     document.querySelectorAll('.float').forEach(el => io.observe(el));
 
-    // Handle initial load (animate as if scrolling down)
+    // Initial load animation
     window.addEventListener('load', () => {
       document.querySelectorAll('.float').forEach(el => {
         el.classList.remove('in-up', 'in-down');
@@ -312,10 +373,18 @@
         el.classList.add('in-up');
       });
       lastScrollY = window.scrollY;
-    });
+    }, { once: true });
 
-    // Keep direction accurate
+    // Accurate direction
     window.addEventListener('scroll', () => { lastScrollY = window.scrollY; }, { passive: true });
+
+    /* ===== Back-to-top FAB visibility ===== */
+    const toTop = document.getElementById('toTop');
+    const showFabAfter = 300; // px
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > showFabAfter){ toTop.classList.add('show'); toTop.setAttribute('aria-hidden', 'false'); }
+      else { toTop.classList.remove('show'); toTop.setAttribute('aria-hidden', 'true'); }
+    }, { passive: true });
   </script>
 </body>
 </html>
