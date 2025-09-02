@@ -196,6 +196,11 @@
     .to-top a{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:#fff; border:1px solid #eee; box-shadow: var(--shadow-sm); }
     .to-top a:hover{ box-shadow: var(--shadow-md); }
     .to-top a i { color: var(--accent); }
+    .about .copy { width: var(--container); margin: 20px auto 0; }
+    .about .intro { text-align:center; color: var(--text-strong); font-weight:600; margin-bottom: 14px; }
+    .about-list { list-style:none; padding:0; margin: 8px auto 0; max-width: 860px; display:grid; gap:10px; }
+    .about-list li { color: var(--text-muted); line-height:1.6; }
+    .about-list li strong { color: var(--text-strong); }
   </style>
 
   <!-- ===== Structured Data ===== -->
@@ -279,32 +284,34 @@
       <div class="section-head container">
         <h2 id="about-title" class="float">About Moxwell</h2>
       </div>
+    
       <div class="copy container">
-        <p class="float"><strong>At Moxwell, we’re closing the gap</strong> between what insurers need and what technology delivers. We build AI-driven claims intelligence with customer experience transparency for mid-size insurers and brokers.</p>
-
-        <!-- shorter, single-line style points -->
-        <p class="float"><strong>AI Claims Assistant —</strong> fraud scoring, claim summaries, and auto-drafted letters. Integrates with ClaimCenter via APIs.</p>
-        <p class="float"><strong>CX AI Transparency —</strong> real-time claim updates in plain language via chat and voice.</p>
-
-        <p class="float">We know heavy enterprise AI is hard to adopt. Moxwell delivers affordable, plug-and-play tools that fit today’s cloud-native, mobile-first ecosystems.</p>
-
-        <p class="float"><strong>Our mission:</strong> Simplify insurance, empower adjusters, and give customers clarity — helping insurers move faster and with real impact.</p>
+        <p class="intro float">We build practical, plug-and-play AI for mid-size insurers and brokers.</p>
+    
+        <ul class="about-list">
+          <li class="float"><strong>AI Claims Assistant —</strong> fraud scoring, claim summaries, auto-drafted letters; integrates with ClaimCenter via APIs.</li>
+          <li class="float"><strong>CX AI Transparency —</strong> real-time, plain-language claim updates via chat or voice.</li>
+          <li class="float"><strong>Fast to adopt —</strong> affordable, cloud-native, mobile-first; no heavy data-science team needed.</li>
+          <li class="float"><strong>Mission —</strong> simplify insurance, empower adjusters, and give customers clarity.</li>
+        </ul>
       </div>
-
+    
       <div class="highlights">
         <article class="highlight float">
           <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-          <p>Client confidentiality with encryption, least-privilege access, and auditability.</p>
+          <p>Encryption, least-privilege access, and auditability.</p>
         </article>
         <article class="highlight float">
           <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-          <p>Dashboards for cycle time, leakage, and customer satisfaction.</p>
+          <p>Dashboards for cycle time, leakage, and satisfaction.</p>
         </article>
         <article class="highlight float">
           <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
           <p>Works with existing platforms and CRMs via secure APIs.</p>
         </article>
       </div>
+    </section>
+        
     </section>
 
     <!-- ===== Contact ===== -->
