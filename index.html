@@ -163,11 +163,27 @@
     .highlight p{ color: var(--text-muted); }
 
     /* ===== Contact ===== */
-    section.contact{ background: var(--surface-alt); }
-    section.contact .section-sub { margin-bottom: 6px; }
-    .contact .actions{ margin-top: 8px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-    .email-display{ margin-top: 14px; font-size:1.02rem; }
-    .email-display a{ color:#007BFF; text-decoration: underline; }
+    section.contact { background: var(--surface-alt); }
+    
+    /* headline → subtext (tight) */
+    section.contact .section-sub { margin: 6px auto 2px; }
+    
+    /* subtext → button (tight + centered) */
+    .contact .actions{
+      margin-top: 4px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    /* button spacing (no extra top gap) */
+    .contact .actions .cta { margin-top: 0; }
+    
+    /* button → email line (slightly tighter) */
+    .email-display { margin-top: 10px; font-size: 1.02rem; }
+    
+    .email-display a { color:#007BFF; text-decoration: underline; }
 
     /* ===== Footer ===== */
     footer.site-footer{ background:#111; color:#bbb; text-align:center; padding: 36px 16px; font-size:.95rem; }
