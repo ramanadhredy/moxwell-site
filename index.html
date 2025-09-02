@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== Meta ===== -->
+  <!-- ========================
+       Meta
+  ========================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Moxwell - Smart Insurance. Real Impact.</title>
-  <meta name="description" content="Reimagining insurance with AI that works for everyone. AI Claims Assistant + CX Transparency for mid-size insurers. Guidewire-compatible, affordable, plug-and-play." />
 
-  <!-- ===== Icons / Fonts ===== -->
+  <!-- Meta Description (SEO) -->
+  <meta name="description"
+        content="Moxwell delivers practical AI for faster claims and clearer customer experiences. Plug-and-play solutions built for mid-size insurers and brokers." />
+
+  <!-- ========================
+       Icons / Fonts
+  ========================= -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -16,19 +23,25 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- ===== Open Graph / Twitter ===== -->
+  <!-- ========================
+       Open Graph / Twitter
+  ========================= -->
   <meta property="og:title" content="Moxwell - Smart Insurance. Real Impact." />
-  <meta property="og:description" content="Reimagining insurance with AI that works for everyone. AI Claims Assistant + CX Transparency. Guidewire-compatible, affordable, plug-and-play." />
+  <meta property="og:description"
+        content="Moxwell delivers practical AI for faster claims and clearer customer experiences. Plug-and-play solutions built for mid-size insurers and brokers." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- ========================
+       Styles
+  ========================= -->
   <style>
     /* =========================
-       Design tokens (keeps colors)
+       Design tokens
        ========================= */
     :root{
       --bg-body: #ffffff;
@@ -49,9 +62,17 @@
     }
 
     /* ===== Base & Resets ===== */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
+    *,
+    *::before,
+    *::after{
+      box-sizing: border-box;
+    }
+
+    html{
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body{
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg-body);
       color: var(--text-strong);
@@ -61,115 +82,414 @@
       min-width: 320px;
       margin: 0;
     }
-    img, svg { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+    img,
+    svg{
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible{
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
 
     /* Utility */
-    .container { width: var(--container); margin-inline: auto; }
-    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+    .container{
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .visually-hidden{
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
 
     /* ===== Skip link ===== */
-    .skip-link{ position:absolute; inset-inline-start:8px; inset-block-start:-40px; background:#000; color:#fff; padding:8px 12px; border-radius:8px; transition:transform .2s ease; transform: translateY(-12px); }
-    .skip-link:focus{ inset-block-start:8px; transform:none; }
+    .skip-link{
+      position: absolute;
+      inset-inline-start: 8px;
+      inset-block-start: -40px;
+      background: #000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: transform .2s ease;
+      transform: translateY(-12px);
+    }
+
+    .skip-link:focus{
+      inset-block-start: 8px;
+      transform: none;
+    }
 
     /* ===== Sticky nav with desktop & mobile ===== */
     header.site-nav{
-      position: sticky; top: 0; z-index: 1000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       background: var(--nav-bg);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 10px rgba(0,0,0,.2);
     }
-    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; }
-    .brand { display:flex; align-items:center; gap:.6rem; color:#fff; font-weight:700; letter-spacing:.5px; }
-    .brand img{ width:28px; height:28px; }
-    .nav-toggle{
-      display: inline-flex; align-items:center; justify-content:center;
-      width: 42px; height: 42px; border-radius: 10px;
-      background: transparent; border: 1px solid rgba(255,255,255,.15);
-      color:#fff; cursor:pointer; transition: background 0.2s ease;
+
+    .nav-wrap{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
     }
-    .nav-toggle:hover { background: rgba(255, 102, 0, 0.15); }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .brand img{
+      width: 28px;
+      height: 28px;
+    }
+
+    .nav-toggle{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .nav-toggle:hover{
+      background: rgba(255, 102, 0, 0.15);
+    }
+
     /* Make hamburger bars use the orange accent */
     .nav-toggle .bar,
     .nav-toggle .bar::before,
-    .nav-toggle .bar::after {
-      width:18px;
-      height:2px;
-      background:var(--accent);
-      border-radius:2px;
-      position:relative;
-      display:block;
+    .nav-toggle .bar::after{
+      width: 18px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      position: relative;
+      display: block;
     }
+
     .nav-toggle .bar::before,
     .nav-toggle .bar::after{
-      content:"";
-      position:absolute;
-      left:0;
+      content: "";
+      position: absolute;
+      left: 0;
     }
-    .nav-toggle .bar::before{ top:-6px; }
-    .nav-toggle .bar::after{ top:6px; }
 
-    nav.primary{ position: fixed; inset-inline:0; top:56px; background: rgba(15,32,39,0.98); display:none; }
-    nav.primary.open{ display:block; }
-    .nav-list{ list-style:none; display:flex; flex-direction:column; gap:12px; padding:12px 16px 20px; margin:0; }
-    .nav-link{ color:#fff; font-weight:600; position:relative; padding:8px 0; }
-    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--accent); transition:width .3s ease; }
-    .nav-link:hover::after{ width:100%; }
+    .nav-toggle .bar::before{
+      top: -6px;
+    }
+
+    .nav-toggle .bar::after{
+      top: 6px;
+    }
+
+    nav.primary{
+      position: fixed;
+      inset-inline: 0;
+      top: 56px;
+      background: rgba(15,32,39,0.98);
+      display: none;
+    }
+
+    nav.primary.open{
+      display: block;
+    }
+
+    .nav-list{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px 16px 20px;
+      margin: 0;
+    }
+
+    .nav-link{
+      color: #fff;
+      font-weight: 600;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width .3s ease;
+    }
+
+    .nav-link:hover::after{
+      width: 100%;
+    }
 
     @media (min-width: 768px){
-      .nav-wrap{ padding:14px 32px; }
-      .nav-toggle{ display:none; }
-      nav.primary{ position:static; display:block; background:transparent; }
-      .nav-list{ flex-direction:row; align-items:center; gap:28px; padding:0; }
+      .nav-wrap{ padding: 14px 32px; }
+      .nav-toggle{ display: none; }
+      nav.primary{ position: static; display: block; background: transparent; }
+      .nav-list{ flex-direction: row; align-items: center; gap: 28px; padding: 0; }
     }
 
     /* ===== Hero (keep gradient) ===== */
     section.hero{
       background: linear-gradient(135deg, var(--hero-grad-a), var(--hero-grad-b), var(--hero-grad-c));
-      color:#fff; text-align:center; position:relative; isolation:isolate;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
     }
-    .hero-inner{ padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px); }
-    .logo{ max-width: 160px; margin: 0 auto 20px; }
-    .brand-name{ font-size: clamp(2rem, 6vw, 3.2rem); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
-    .tagline{ font-size: clamp(1rem, 4vw, 1.6rem); color:#ddd; margin-top:12px; }
-    .subtagline{ font-size: clamp(0.95rem, 3.5vw, 1.2rem); color:#eaeaea; margin-top:8px; opacity:0.95; }
-    .cta{ margin-top:28px; display:inline-block; background:var(--accent); color:#fff; padding:14px 32px; border-radius:10px; font-weight:600; font-size:1.05rem; box-shadow: 0 6px 12px rgba(0,0,0,.2); transition: transform .15s ease, filter .15s ease; }
-    .cta:hover{ transform: translateY(-1px); filter: brightness(.98); }
+
+    .hero-inner{
+      padding: clamp(96px, 18vw, 160px) 16px clamp(56px, 10vw, 120px);
+    }
+
+    .logo{
+      max-width: 160px;
+      margin: 0 auto 20px;
+    }
+
+    .brand-name{
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tagline{
+      font-size: clamp(1rem, 4vw, 1.6rem);
+      color: #ddd;
+      margin-top: 12px;
+    }
+
+    .subtagline{
+      font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+      color: #eaeaea;
+      margin-top: 8px;
+      opacity: 0.95;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta{
+      margin-top: 28px;
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,.2);
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .cta:hover{
+      transform: translateY(-1px);
+      filter: brightness(.98);
+    }
 
     /* ===== Sections ===== */
-    section.block{ padding: clamp(56px, 10vw, 100px) 0 clamp(40px, 8vw, 80px); scroll-margin-top: 96px; }
-    .section-head{ text-align:center; }
-    .section-head h2{ font-size: clamp(1.6rem, 5vw, 2.6rem); margin-bottom: 14px; color: var(--text-strong); position: relative; display:inline-block; }
-    .section-head h2::after{ content:""; width:60px; height:4px; background:var(--accent); position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); }
-    .section-sub{ max-width: 760px; margin: 18px auto 0; color: var(--text-muted); font-size:1.05rem; }
+    section.block{
+      padding: clamp(56px, 10vw, 100px) 0 clamp(40px, 8vw, 80px);
+      scroll-margin-top: 96px;
+    }
+
+    .section-head{
+      text-align: center;
+    }
+
+    .section-head h2{
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      margin-bottom: 10px;
+      color: var(--text-strong);
+      position: relative;
+      display: inline-block;
+      letter-spacing: .2px;
+    }
+
+    .section-head h2::after{
+      content: "";
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-sub{
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
 
     /* ===== Features grid ===== */
-    .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; width: var(--container); margin: 40px auto 0; }
-    .feature{ padding: 36px 28px; border-radius: var(--radius-lg); background: linear-gradient(to bottom right, #ffffff, #f8f8f8); box-shadow: var(--shadow-md); transition: transform .25s ease, box-shadow .25s ease; text-align:center; }
-    .feature:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .feature img{ width:64px; margin: 0 auto 16px; } /* centered icons */
-    .feature h3{ font-size:1.15rem; margin-bottom:8px; }
-    .feature p{ color: var(--text-muted); font-size:1rem; }
+    .feature-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      width: var(--container);
+      margin: 40px auto 0;
+    }
+
+    .feature{
+      padding: 30px 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
+      box-shadow: var(--shadow-md);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-align: center;
+    }
+
+    .feature:hover{
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature img{
+      width: 64px;
+      margin: 0 auto 16px; /* centered icons */
+    }
+
+    .feature h3{
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .feature p{
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
 
     /* ===== About / Highlights ===== */
-    .about .copy{ width: var(--container); margin: 20px auto 0; display:grid; gap:14px; }
-    .about .copy p{ color: var(--text-muted); font-size:1.05rem; line-height:1.8; }
-    .highlights{ width: var(--container); margin: 32px auto 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .highlight{ background: var(--surface); border:1px solid #eee; border-radius: var(--radius-lg); padding: 22px; text-align:left; box-shadow: var(--shadow-sm); transition: transform .25s ease; }
-    .highlight:hover{ transform: translateY(-6px); }
-    .highlight h4{ font-size:1.05rem; margin-bottom:8px; color:#222; display:flex; gap:.6rem; align-items:center; }
-    .highlight p{ color: var(--text-muted); }
+    #about .copy{
+      max-width: 880px;
+      margin: 24px auto 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    #about .copy p{
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin: 8px 0 12px;
+      line-height: 1.55;
+    }
+
+    @media (min-width: 992px){
+      #about .copy{ text-align: left; }
+    }
+
+    .highlights{
+      width: var(--container);
+      margin: 32px auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .highlight{
+      background: var(--surface);
+      border: 1px solid #eee;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease;
+      min-height: 140px;
+    }
+
+    .highlight:hover{
+      transform: translateY(-6px);
+    }
+
+    .highlight h4{
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #222;
+      display: flex;
+      gap: .6rem;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .highlight p{
+      color: var(--text-muted);
+      margin: 6px 0 0;
+    }
 
     /* ===== Contact ===== */
-    section.contact{ background: var(--surface-alt); }
-    section.contact .section-sub { margin-bottom: 6px; }
-    .contact .actions{ margin-top: 8px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-    .email-display{ margin-top: 14px; font-size:1.02rem; }
-    .email-display a{ color:#007BFF; text-decoration: underline; }
+    section.contact{
+      background: var(--surface-alt);
+    }
+
+    section.contact .section-sub{
+      margin: 8px auto 4px;   /* tightened under heading */
+    }
+
+    .contact .actions{
+      margin-top: 0;          /* remove extra gap before button */
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact .actions .cta{
+      margin-top: 6px;        /* local margin for button */
+    }
+
+    .email-display{
+      margin-top: 14px;
+      font-size: 1.02rem;
+    }
+
+    .email-display a{
+      color: #007BFF;
+      text-decoration: underline;
+    }
 
     /* ===== Footer ===== */
-    footer.site-footer{ background:#111; color:#bbb; text-align:center; padding: 36px 16px; font-size:.95rem; }
+    footer.site-footer{
+      background: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 36px 16px;
+      font-size: .95rem;
+    }
 
     /* ===== Small-screen card tightening ===== */
     @media (max-width: 480px){
@@ -179,36 +499,77 @@
     }
 
     /* ===== Floating animations (both directions, repeatable) ===== */
-    @keyframes float-in-up { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
-    @keyframes float-in-down{ from { opacity: 0; transform: translate3d(0,-24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
-    .float{ opacity: 0; will-change: transform, opacity; }
-    .float.in-up   { animation: float-in-up   650ms ease-out both; }
-    .float.in-down { animation: float-in-down 650ms ease-out both; }
+    @keyframes float-in-up{
+      from{ opacity: 0; transform: translate3d(0, 24px, 0); }
+      to  { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    @keyframes float-in-down{
+      from{ opacity: 0; transform: translate3d(0,-24px, 0); }
+      to  { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .float{
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .float.in-up{
+      animation: float-in-up 650ms ease-out both;
+    }
+
+    .float.in-down{
+      animation: float-in-down 650ms ease-out both;
+    }
 
     /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce){
       .float{ opacity: 1 !important; animation: none !important; transform: none !important; }
-      .cta, .feature, .highlight{ transition:none; }
+      .cta, .feature, .highlight{ transition: none; }
     }
 
     /* ===== Back-to-top FAB ===== */
-    .to-top{ position: fixed; right: 16px; bottom: 16px; z-index: 999; opacity:0; visibility:hidden; transform: translateY(10px); transition: all .2s ease; }
-    .to-top.show{ opacity:1; visibility:visible; transform:none; }
-    .to-top a{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:#fff; border:1px solid #eee; box-shadow: var(--shadow-sm); }
-    .to-top a:hover{ box-shadow: var(--shadow-md); }
-    .to-top a i { color: var(--accent); }
-    .about .copy { width: var(--container); margin: 20px auto 0; }
-    .about .intro { text-align:center; color: var(--text-strong); font-weight:600; margin-bottom: 14px; }
-    .about-list { list-style:none; padding:0; margin: 8px auto 0; max-width: 860px; display:grid; gap:10px; }
-    .about-list li { color: var(--text-muted); line-height:1.6; }
-    .about-list li strong { color: var(--text-strong); }
-    /* Tighten spacing in Contact section */
-    section.contact .section-sub { margin: 8px auto 4px; }
-    section.contact .actions { margin-top: 0; }
-    section.contact .actions .cta { margin-top: 6px; }
+    .to-top{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all .2s ease;
+    }
+
+    .to-top.show{
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+
+    .to-top a{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #eee;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .to-top a:hover{
+      box-shadow: var(--shadow-md);
+    }
+
+    .to-top a i{
+      color: var(--accent);
+    }
   </style>
 
-  <!-- ===== Structured Data ===== -->
+  <!-- ========================
+       Structured Data
+  ========================= -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -217,14 +578,19 @@
     "url": "https://www.moxwell.ca",
     "logo": "https://www.moxwell.ca/logo.png",
     "email": "info@moxwell.ca",
-    "sameAs": ["https://www.linkedin.com/company/moxwell"]
+    "sameAs": [
+      "https://www.linkedin.com/company/moxwell"
+    ]
   }
   </script>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===== Navigation ===== -->
+  <!-- ========================
+       Navigation
+  ========================= -->
   <header class="site-nav" role="banner">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="Moxwell home">
@@ -232,7 +598,11 @@
         <span>MOXWELL</span>
       </a>
 
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+      <button id="navToggle"
+              class="nav-toggle"
+              aria-expanded="false"
+              aria-controls="primaryNav"
+              aria-label="Open menu">
         <span class="bar" aria-hidden="true"></span>
       </button>
 
@@ -246,10 +616,18 @@
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
+  <!-- ========================
+       Hero
+  ========================= -->
   <section id="home" class="hero" aria-label="Hero">
     <div class="container hero-inner">
-      <img src="logo.png" alt="Moxwell Logo" class="logo float" width="160" height="160" loading="eager" decoding="sync" />
+      <img src="logo.png"
+           alt="Moxwell Logo"
+           class="logo float"
+           width="160"
+           height="160"
+           loading="eager"
+           decoding="sync" />
       <h1 class="brand-name float">MOXWELL</h1>
       <p class="tagline float">Smart Insurance. Real Impact.</p>
       <p class="subtagline float">Practical AI for faster claims and clearer customer experiences.</p>
@@ -258,11 +636,16 @@
   </section>
 
   <main id="main">
-    <!-- ===== Features ===== -->
+    <!-- ========================
+         Features / Solutions
+    ========================= -->
     <section id="features" class="block" aria-labelledby="features-title">
       <div class="section-head container">
         <h2 id="features-title" class="float">Solutions</h2>
-        <p class="section-sub float">AI that integrates with leading insurance systems to deliver faster claims, fraud reduction, and transparent customer updates.</p>
+        <p class="section-sub float">
+          AI that integrates with leading insurance systems to deliver faster claims, fraud reduction,
+          and transparent customer updates.
+        </p>
       </div>
 
       <div class="feature-grid">
@@ -271,11 +654,13 @@
           <h3>AI Claims Assistant</h3>
           <p>Fraud detection, instant summaries, and auto-drafted letters that integrate with ClaimCenter via standard APIs.</p>
         </article>
+
         <article class="feature float">
           <img src="ai-icon.svg" alt="AI" loading="lazy" decoding="async" />
           <h3>CX AI Transparency</h3>
           <p>Real-time, plain-language updates through chat and voice — improving trust and retention.</p>
         </article>
+
         <article class="feature float">
           <img src="mobile-icon.svg" alt="Mobile-First" loading="lazy" decoding="async" />
           <h3>Plug-and-Play for Insurers</h3>
@@ -284,71 +669,112 @@
       </div>
     </section>
 
-    
-    <!-- ===== About ===== -->
-    
+    <!-- ========================
+         About
+    ========================= -->
     <section id="about" class="block about" aria-labelledby="about-title">
-    <div class="section-head container">
-      <h2 id="about-title" class="float">About Moxwell</h2>
-    </div>
-  
-    <div class="copy container">
-      <p class="float">Moxwell is reimagining insurance with AI solutions designed for speed, clarity, and trust. We help insurers resolve claims faster while keeping customers informed at every step.</p>
-  
-      <p class="float">Our AI Claims Assistant streamlines the process by detecting fraud, generating summaries, and drafting communications within existing workflows. Alongside this, our CX AI Transparency provides real-time updates in clear, simple language across chat and voice channels.</p>
-  
-      <p class="float">Built for mid-size insurers and brokers, Moxwell delivers affordable, plug-and-play tools that integrate seamlessly with modern insurance platforms. Our focus is on practical adoption — no heavy enterprise projects, just solutions that work in today’s cloud-native, mobile-first world.</p>
-  
-      <p class="float">Our mission is to simplify insurance, empower adjusters, and create meaningful experiences for customers — helping the industry move faster, smarter, and with real impact.</p>
-    </div>
-  
-    <div class="highlights">
-      <article class="highlight float">
-        <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-        <p>Confidential data protected with encryption and access controls.</p>
-      </article>
-      <article class="highlight float">
-        <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-        <p>Clear dashboards to monitor claims, costs, and customer trends.</p>
-      </article>
-      <article class="highlight float">
-        <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
-        <p>Works with existing systems and CRMs through secure APIs.</p>
-      </article>
-    </div>
-  </section>
+      <div class="section-head container">
+        <h2 id="about-title" class="float">About Moxwell</h2>
+      </div>
 
-    <!-- ===== Contact ===== -->
+      <div class="copy container">
+        <p class="float">
+          Moxwell is reimagining insurance with AI solutions designed for speed, clarity, and trust.
+          We help insurers resolve claims faster while keeping customers informed at every step.
+        </p>
+
+        <p class="float">
+          Our AI Claims Assistant streamlines the process by detecting fraud, generating summaries,
+          and drafting communications within existing workflows. Alongside this, our CX AI Transparency
+          provides real-time updates in clear, simple language across chat and voice channels.
+        </p>
+
+        <p class="float">
+          Built for mid-size insurers and brokers, Moxwell delivers affordable, plug-and-play tools that
+          integrate seamlessly with modern insurance platforms. Our focus is on practical adoption — no heavy
+          enterprise projects, just solutions that work in today’s cloud-native, mobile-first world.
+        </p>
+
+        <p class="float">
+          Our mission is to simplify insurance, empower adjusters, and create meaningful experiences for customers —
+          helping the industry move faster, smarter, and with real impact.
+        </p>
+      </div>
+
+      <div class="highlights">
+        <article class="highlight float">
+          <h4>
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            Data Privacy First
+          </h4>
+          <p>Confidential data protected with encryption and access controls.</p>
+        </article>
+
+        <article class="highlight float">
+          <h4>
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            Real-Time Analytics
+          </h4>
+          <p>Clear dashboards to monitor claims, costs, and customer trends.</p>
+        </article>
+
+        <article class="highlight float">
+          <h4>
+            <i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i>
+            Seamless Integration
+          </h4>
+          <p>Works with existing systems and CRMs through secure APIs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================
+         Contact
+    ========================= -->
     <section id="contact" class="block contact" aria-labelledby="contact-title">
       <div class="section-head container">
         <h2 id="contact-title" class="float">Contact Us</h2>
         <p class="section-sub float">We'd love to learn about your goals and show how Moxwell can help.</p>
+
         <div class="actions">
           <a class="cta float" href="mailto:info@moxwell.ca">Let's Talk</a>
-          <!-- removed Back to Top button -->
+          <!-- Back to Top button removed by request -->
         </div>
-        <p class="email-display float">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
+
+        <p class="email-display float">
+          Or email us directly at:
+          <a href="mailto:info@moxwell.ca">info@moxwell.ca</a>
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
+  <!-- ========================
+       Footer
+  ========================= -->
   <footer class="site-footer" role="contentinfo">
     &copy; 2025 Moxwell. Built with innovation in Canada.
   </footer>
 
   <!-- Back-to-top FAB -->
   <div class="to-top" id="toTop" aria-hidden="true">
-    <a href="#home" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    <a href="#home" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
   </div>
 
+  <!-- ========================
+       Scripts
+  ========================= -->
   <script>
     /* ===== Mobile menu toggle with focus trap ===== */
-    const navToggle = document.getElementById('navToggle');
+    const navToggle  = document.getElementById('navToggle');
     const primaryNav = document.getElementById('primaryNav');
-    const navList   = document.getElementById('navList');
+    const navList    = document.getElementById('navList');
 
-    const focusablesSelector = 'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusablesSelector =
+      'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
     let previousActiveEl = null;
 
     function setMenu(open){
@@ -361,34 +787,52 @@
       if(open){
         previousActiveEl = document.activeElement;
         const firstFocus = primaryNav.querySelector(focusablesSelector);
-        firstFocus && firstFocus.focus();
+        if(firstFocus){ firstFocus.focus(); }
       }else if(previousActiveEl){
         previousActiveEl.focus();
       }
     }
 
-    navToggle.addEventListener('click', () => setMenu(!primaryNav.classList.contains('open')));
-    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    navToggle.addEventListener('click', () => {
+      setMenu(!primaryNav.classList.contains('open'));
+    });
+
+    navList.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
 
     // Trap focus when open
     document.addEventListener('keydown', (e) => {
       if(!primaryNav.classList.contains('open')) return;
-      if(e.key === 'Escape'){ setMenu(false); }
+
+      if(e.key === 'Escape'){
+        setMenu(false);
+      }
+
       if(e.key === 'Tab'){
         const focusables = primaryNav.querySelectorAll(focusablesSelector);
         const first = focusables[0];
         const last  = focusables[focusables.length - 1];
-        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        }else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
 
     /* ===== Reusable float animations (both ways, repeat every pass) ===== */
     let lastScrollY = window.scrollY;
+
     const io = new IntersectionObserver((entries) => {
       const scrollingDown = window.scrollY >= lastScrollY;
+
       entries.forEach(entry => {
         const el = entry.target;
+
         if (entry.isIntersecting) {
           el.classList.remove('in-up', 'in-down');
           void el.offsetWidth; // restart animation
@@ -397,6 +841,7 @@
           el.classList.remove('in-up', 'in-down');
         }
       });
+
       lastScrollY = window.scrollY;
     }, { threshold: 0.2 });
 
@@ -412,15 +857,23 @@
       lastScrollY = window.scrollY;
     }, { once: true });
 
-    // Accurate direction
-    window.addEventListener('scroll', () => { lastScrollY = window.scrollY; }, { passive: true });
+    // Accurate direction cache
+    window.addEventListener('scroll', () => {
+      lastScrollY = window.scrollY;
+    }, { passive: true });
 
     /* ===== Back-to-top FAB visibility ===== */
     const toTop = document.getElementById('toTop');
     const showFabAfter = 300; // px
+
     window.addEventListener('scroll', () => {
-      if(window.scrollY > showFabAfter){ toTop.classList.add('show'); toTop.setAttribute('aria-hidden', 'false'); }
-      else { toTop.classList.remove('show'); toTop.setAttribute('aria-hidden', 'true'); }
+      if(window.scrollY > showFabAfter){
+        toTop.classList.add('show');
+        toTop.setAttribute('aria-hidden', 'false');
+      }else{
+        toTop.classList.remove('show');
+        toTop.setAttribute('aria-hidden', 'true');
+      }
     }, { passive: true });
   </script>
 </body>
