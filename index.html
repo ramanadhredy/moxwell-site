@@ -31,14 +31,14 @@
        Design tokens (keeps colors)
        ========================= */
     :root{
-      --bg-body: #ffffff;           /* keep original */
+      --bg-body: #ffffff;
       --text-strong: #111;
       --text-muted: #555;
-      --surface: #ffffff;           /* cards */
-      --surface-alt: #f2f2f2;       /* contact section */
-      --accent: #ff6600;            /* keep orange */
-      --nav-bg: rgba(15,32,39,.95); /* keep nav tone */
-      --hero-grad-a: #0f2027;       /* keep gradient */
+      --surface: #ffffff;
+      --surface-alt: #f2f2f2;
+      --accent: #ff6600;
+      --nav-bg: rgba(15,32,39,.95);
+      --hero-grad-a: #0f2027;
       --hero-grad-b: #203a43;
       --hero-grad-c: #2c5364;
       --radius-lg: 12px;
@@ -112,7 +112,7 @@
 
     nav.primary{ position: fixed; inset-inline:0; top:56px; background: rgba(15,32,39,0.98); display:none; }
     nav.primary.open{ display:block; }
-    .nav-list{ list-style:none; display:flex; flex-direction:column; gap:12px; padding:12px 16px 20px; margin: 0; }
+    .nav-list{ list-style:none; display:flex; flex-direction:column; gap:12px; padding:12px 16px 20px; margin:0; }
     .nav-link{ color:#fff; font-weight:600; position:relative; padding:8px 0; }
     .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--accent); transition:width .3s ease; }
     .nav-link:hover::after{ width:100%; }
@@ -146,9 +146,9 @@
 
     /* ===== Features grid ===== */
     .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; width: var(--container); margin: 40px auto 0; }
-    .feature{ padding: 36px 28px; border-radius: var(--radius-lg); background: linear-gradient(to bottom right, #ffffff, #f8f8f8); box-shadow: var(--shadow-md); transition: transform .25s ease, box-shadow .25s ease; }
+    .feature{ padding: 36px 28px; border-radius: var(--radius-lg); background: linear-gradient(to bottom right, #ffffff, #f8f8f8); box-shadow: var(--shadow-md); transition: transform .25s ease, box-shadow .25s ease; text-align:center; }
     .feature:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .feature img{ width:64px; margin-bottom: 16px; }
+    .feature img{ width:64px; margin: 0 auto 16px; } /* centered icons */
     .feature h3{ font-size:1.15rem; margin-bottom:8px; }
     .feature p{ color: var(--text-muted); font-size:1rem; }
 
@@ -207,9 +207,7 @@
     "url": "https://www.moxwell.ca",
     "logo": "https://www.moxwell.ca/logo.png",
     "email": "info@moxwell.ca",
-    "sameAs": [
-      "https://www.linkedin.com/company/moxwell"
-    ]
+    "sameAs": ["https://www.linkedin.com/company/moxwell"]
   }
   </script>
 </head>
@@ -261,17 +259,17 @@
         <article class="feature float">
           <img src="cloud-icon.svg" alt="Cloud-Native" loading="lazy" decoding="async" />
           <h3>AI Claims Assistant</h3>
-          <p>Fraud detection, instant claim summaries, and auto-drafted letters that integrate with ClaimCenter workflows through standard APIs.</p>
+          <p>Fraud detection, instant summaries, and auto-drafted letters that integrate with ClaimCenter via standard APIs.</p>
         </article>
         <article class="feature float">
-          <img src="ai-icon.svg" alt="AI-Ready" loading="lazy" decoding="async" />
+          <img src="ai-icon.svg" alt="AI" loading="lazy" decoding="async" />
           <h3>CX AI Transparency</h3>
-          <p>Real-time, plain-language updates for policyholders via chat and voice — improving trust and retention across the claims journey.</p>
+          <p>Real-time, plain-language updates through chat and voice — improving trust and retention.</p>
         </article>
         <article class="feature float">
           <img src="mobile-icon.svg" alt="Mobile-First" loading="lazy" decoding="async" />
           <h3>Plug-and-Play for Insurers</h3>
-          <p>Affordable, secure deployment for mid-size insurers and brokers, fitting today’s cloud-native, mobile-first ecosystems.</p>
+          <p>Affordable, secure deployment for mid-size insurers and brokers — cloud-native and mobile-first.</p>
         </article>
       </div>
     </section>
@@ -282,29 +280,29 @@
         <h2 id="about-title" class="float">About Moxwell</h2>
       </div>
       <div class="copy container">
-        <p class="float"><strong>At Moxwell, we’re closing the gap between what insurers need and what technology delivers.</strong> Our solutions combine AI-driven claims intelligence with customer experience transparency, designed specifically for mid-size insurers and brokers.</p>
+        <p class="float"><strong>At Moxwell, we’re closing the gap</strong> between what insurers need and what technology delivers. We build AI-driven claims intelligence with customer experience transparency for mid-size insurers and brokers.</p>
 
-        <p class="float"><strong>AI Claims Assistant</strong> &rarr; Fraud detection, claim summaries, and auto-drafted letters that <em>integrate with Guidewire ClaimCenter workflows</em> via standard APIs.</p>
+        <!-- shorter, single-line style points -->
+        <p class="float"><strong>AI Claims Assistant —</strong> fraud scoring, claim summaries, and auto-drafted letters. Integrates with ClaimCenter via APIs.</p>
+        <p class="float"><strong>CX AI Transparency —</strong> real-time claim updates in plain language via chat and voice.</p>
 
-        <p class="float"><strong>CX AI Transparency</strong> &rarr; Real-time, plain-language updates for policyholders through chat and voice, improving trust and retention.</p>
+        <p class="float">We know heavy enterprise AI is hard to adopt. Moxwell delivers affordable, plug-and-play tools that fit today’s cloud-native, mobile-first ecosystems.</p>
 
-        <p class="float">With deep expertise in P&amp;C insurance systems, we understand how difficult it is for insurers to adopt heavy, enterprise AI platforms. That’s why Moxwell delivers affordable, plug-and-play AI tools that fit into today’s cloud-native, mobile-first insurance ecosystems.</p>
-
-        <p class="float"><strong>Our mission:</strong> Simplify insurance, empower adjusters, and deliver clarity to customers — all while helping insurers move faster, smarter, and with real impact.</p>
+        <p class="float"><strong>Our mission:</strong> Simplify insurance, empower adjusters, and give customers clarity — helping insurers move faster and with real impact.</p>
       </div>
 
       <div class="highlights">
         <article class="highlight float">
           <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-          <p>Client confidentiality is protected with encryption, least-privilege access, and auditability.</p>
+          <p>Client confidentiality with encryption, least-privilege access, and auditability.</p>
         </article>
         <article class="highlight float">
           <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-          <p>Actionable dashboards to monitor claims cycle time, leakage, and customer satisfaction.</p>
+          <p>Dashboards for cycle time, leakage, and customer satisfaction.</p>
         </article>
         <article class="highlight float">
           <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
-          <p>Connects with existing insurance platforms and CRMs via secure APIs — built to fit modern, cloud-native ecosystems.</p>
+          <p>Works with existing platforms and CRMs via secure APIs.</p>
         </article>
       </div>
     </section>
@@ -316,7 +314,7 @@
         <p class="section-sub float">We'd love to learn about your goals and show how Moxwell can help.</p>
         <div class="actions">
           <a class="cta float" href="mailto:info@moxwell.ca">Let's Talk</a>
-          <a class="cta float" href="#home" aria-label="Back to top via hero">Back to Top</a>
+          <!-- removed Back to Top button -->
         </div>
         <p class="email-display float">Or email us directly at: <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
       </div>
