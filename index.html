@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="prefetch" href="contact.html" as="document">
 
   <!-- ===== Open Graph / Twitter ===== -->
   <meta property="og:title" content="Moxwell - Smart Insurance. Real Impact." />
@@ -228,6 +229,17 @@
       margin: 6px 0 8px;
       line-height: 1.55;
     }
+    
+    /* Page fade transition */
+    body { opacity: 1; transition: opacity .22s ease; }
+    body.fade-out { opacity: .15; }
+    
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+    body { transition: none !important; }
+    body.fade-out { opacity: 1 !important; }
+    }
+
   </style>
 
   <!-- ===== Structured Data ===== -->
@@ -448,5 +460,24 @@
       else { toTop.classList.remove('show'); toTop.setAttribute('aria-hidden', 'true'); }
     }, { passive: true });
   </script>
+  <script>
+  (function () {
+    var btn = document.getElementById('letsTalk');
+    if (!btn) return;
+
+    btn.addEventListener('click', function (e) {
+      // only animate if not reduced-motion
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return; // let the link work normally
+
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      // small delay to show the fade, then navigate
+      setTimeout(function () {
+        window.location.href = btn.getAttribute('href');
+      }, 220);
+    });
+  })();
+</script>
 </body>
 </html>
