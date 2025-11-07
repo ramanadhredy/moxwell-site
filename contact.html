@@ -1,230 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ========== Meta ========== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us – Moxwell</title>
-  <meta name="description" content="Tell us about your goals and see how Moxwell’s Claims AI and CX AI can help you move faster with real impact." />
+  <title>Contact Us — Moxwell</title>
+  <meta name="description" content="Tell us about your goals and we’ll show how Moxwell can help." />
+  <link rel="canonical" href="https://www.moxwell.ca/contact.html" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       Moxwell Design System (Tech Blue)
+       ========================= */
     :root{
-      --ink: #0f1720;
-      --muted: #5b6576;
-      --accent: #ff6600;
-      --ring: rgba(255,102,0,.28);
-      --bg-a: #0f2027;
-      --bg-b: #203a43;
-      --bg-c: #2c5364;
-      --surface: rgba(255,255,255,.08);
-      --card: rgba(255,255,255,.10);
-      --stroke: rgba(255,255,255,.18);
-      --shadow: 0 20px 60px rgba(0,0,0,.22);
-      --radius: 18px;
-      --radius-sm: 12px;
+      --blue: #0066ff;          /* primary */
+      --cyan: #00bfff;          /* accent */
+      --ink:  #111111;
+      --muted:#5b6576;
+      --bg:   #ffffff;
+      --divider: #eaeaea;
+
       --container: min(1000px, 92vw);
+      --r-sm: 12px; --r: 14px; --r-lg: 18px;
+      --shadow-sm: 0 4px 10px rgba(0,0,0,.06);
+      --shadow-md: 0 10px 30px rgba(0,0,0,.08);
+      --shadow-lg: 0 22px 70px rgba(0,0,0,.12);
     }
 
     *{ box-sizing: border-box; }
-    html, body { height: 100%; }
+    html { -webkit-text-size-adjust: 100%; }
     body{
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: #e9eef2;
+      margin:0; color:var(--ink);
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(255,255,255,.08), transparent 60%),
-        linear-gradient(135deg, var(--bg-a), var(--bg-b), var(--bg-c));
+        radial-gradient(1200px 520px at 80% -10%, color-mix(in oklab, var(--cyan) 22%, transparent) , transparent 60%),
+        radial-gradient(1000px 520px at -10% 0%, color-mix(in oklab, var(--blue) 18%, transparent), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
       background-attachment: fixed;
     }
+    img{ display:block; max-width:100%; height:auto; }
+    a{ color:inherit; text-decoration:none; }
+    :focus-visible{ outline:3px solid var(--blue); outline-offset:2px; border-radius:6px; }
 
-    /* Top bar */
-    .nav{
-      position: sticky; top: 0; z-index: 10;
+    .brand-accent{ position:fixed; inset:0 0 auto 0; height:3px; z-index:1002;
+      background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+
+    .container{ width:var(--container); margin-inline:auto; }
+
+    /* ===== Nav (matches index) ===== */
+    header.site-nav{
+      position: sticky; top: 0; z-index: 1001;
       backdrop-filter: blur(10px);
-      background: rgba(15, 32, 39, .64);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: color-mix(in oklab, #0f2027 92%, transparent);
+      box-shadow: 0 4px 10px rgba(0,0,0,.18);
     }
-    .nav .wrap{
-      width: var(--container);
-      margin: 0 auto;
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 12px 6px;
-    }
-    .brand{ display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.5px; }
-    .brand img{ width:28px; height:28px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); }
-    .nav a{ color:#fff; text-decoration:none; font-weight:600; opacity:.95; }
-    .nav a:hover{ opacity:1; }
+    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; }
+    .brand{ display:flex; align-items:center; gap:.6rem; color:#fff; font-weight:700; letter-spacing:.4px; }
+    .brand img{ width:28px; height:28px; }
 
-    /* Hero */
-    .hero{
-      text-align:center;
-      padding: clamp(56px, 10vw, 92px) 16px 28px;
-    }
-    .hero h1{
-      margin: 0 0 10px;
-      font-size: clamp(1.8rem, 4.2vw, 2.6rem);
-      letter-spacing: .2px;
-    }
-    .hero p{
-      margin: 0;
-      color: #c9d3dd;
-      max-width: 720px;
-      margin-inline: auto;
-    }
+    .back-link{ color:#fff; font-weight:600; opacity:.95; }
+    .back-link:hover{ opacity:1; text-decoration: underline; }
 
-    /* Card */
+    /* ===== Hero ===== */
+    .hero{ text-align:center; padding: clamp(60px, 12vw, 100px) 16px 28px; }
+    .hero h1{ margin:0 0 10px; font-size: clamp(28px, 5.2vw, 40px); letter-spacing:.2px; }
+    .hero p{ margin:0; color:#637087; max-width: 720px; margin-inline:auto; }
+
+    /* ===== Card ===== */
     .card{
-      width: var(--container);
+      width:var(--container);
       margin: 24px auto 72px;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      backdrop-filter: blur(14px);
+      background:#fff;
+      border:1px solid var(--divider);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-md);
       padding: clamp(18px, 3vw, 28px);
     }
-
     .legend{
       display:flex; align-items:center; gap:10px;
-      font-weight:700; font-size:1.05rem; color:#fff;
+      font-weight:700; font-size:1.05rem; color:#0c1730;
       margin-bottom: 18px;
     }
     .legend::before{
-      content:""; width:46px; height:4px; border-radius:4px; background: var(--accent);
-      box-shadow: 0 6px 18px rgba(255,102,0,.35);
+      content:""; width:46px; height:4px; border-radius:4px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      box-shadow: 0 6px 18px color-mix(in oklab, var(--blue) 35%, transparent);
     }
 
+    /* ===== Form ===== */
     form{ display:grid; gap:22px; }
+    .grid{ display:grid; gap:22px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 820px){ .grid{ grid-template-columns:1fr; } }
 
-    .grid{
-      display:grid; gap:22px;
-      grid-template-columns: 1fr 1fr;
+    .field{ position:relative; }
+    .field input, .field select, .field textarea{
+      width:100%; padding:18px 14px 14px;
+      border-radius: var(--r-sm); border:1px solid #dfe6f3;
+      background:#f9fbff; color:#0c1730; font:inherit; outline:none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
     }
-    @media (max-width: 820px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    /* Floating labels */
-    .field{ position: relative; }
-    .field input,
-    .field select,
-    .field textarea{
-      width:100%;
-      padding: 18px 14px 14px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color:#fff; font: inherit;
-      outline: none;
-      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease, transform .02s ease;
-    }
-    .field textarea{ min-height: 124px; resize: vertical; }
-    .field input::placeholder,
-    .field textarea::placeholder{ color: transparent; }
+    .field textarea{ min-height:124px; resize:vertical; }
+    .field input::placeholder, .field textarea::placeholder{ color:transparent; }
 
     .field label{
-      position:absolute; left:12px; top:14px;
-      font-size:.95rem; color:#cfd7df;
-      background: transparent; padding:0 6px;
-      pointer-events:none; transform-origin:left top;
+      position:absolute; left:12px; top:14px; font-size:.95rem; color:#71819d;
+      background:#ffffff; padding:0 6px; pointer-events:none;
+      transform-origin:left top;
       transition: transform .15s ease, color .15s ease, top .15s ease, background .15s ease;
     }
 
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus{
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px var(--ring);
-      background: rgba(255,255,255,.10);
+    .field input:focus, .field select:focus, .field textarea:focus{
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px color-mix(in oklab, var(--blue) 25%, transparent);
+      background:#fff;
     }
 
+    /* Float labels on focus/filled + always float for selects */
     .field input:not(:placeholder-shown) + label,
     .field textarea:not(:placeholder-shown) + label,
-    .field select:focus + label,
     .field input:focus + label,
-    .field textarea:focus + label{
-      top: -9px;
-      transform: scale(.85) translateY(-2px);
-      background: rgba(15, 32, 39, .75);
-      backdrop-filter: blur(6px);
-      border-radius: 6px;
-      color: #fff;
-    }
-
-    /* --- NEW: keep labels floated on selects & filled fields --- */
-    .field select + label{
-      top: -9px;
-      transform: scale(.85) translateY(-2px);
-      background: rgba(15, 32, 39, .75);
-      backdrop-filter: blur(6px);
-      border-radius: 6px;
-      color: #fff;
-    }
+    .field textarea:focus + label,
+    .field select + label,
     .field.filled label{
-      top: -9px;
-      transform: scale(.85) translateY(-2px);
-      background: rgba(15, 32, 39, .75);
-      border-radius: 6px;
-      color: #fff;
+      top:-9px; transform: scale(.85) translateY(-2px);
+      background:#fff; color:#0c1730; border-radius:6px;
     }
-    /* ---------------------------------------------------------- */
 
-    /* Helpers */
-    .muted{ color:#c9d3dd; font-size:.9rem; }
-    .stack-compact{ display:grid; gap: 14px; }
+    /* Consent rows */
+    .consent{ display:flex; gap:10px; align-items:flex-start; color:#0c1730; font-size:.92rem; }
+    .consent input{ margin-top:3px; }
 
     /* Actions */
     .actions{ display:flex; align-items:center; gap:14px; justify-content:center; }
     .btn{
-      background: var(--accent);
-      color:#fff; font-weight:700; border:0;
-      padding: 14px 26px; border-radius: 12px; cursor:pointer;
-      box-shadow: 0 14px 28px rgba(255,102,0,.25);
+      border:0; cursor:pointer; font-weight:700; color:#fff;
+      padding:14px 26px; border-radius:12px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 14px 28px color-mix(in oklab, var(--blue) 25%, transparent);
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
     }
-    .btn:hover{ filter: brightness(.98); transform: translateY(-1px); }
-    .btn:active{ transform: translateY(0); }
-
-    /* Consent row */
-    .consent{
-      display:flex; gap:10px; align-items:flex-start; color:#e6edf3;
-      font-size:.92rem;
-    }
-    .consent input{ margin-top: 3px; }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(.98); box-shadow: 0 16px 32px color-mix(in oklab, var(--cyan) 28%, transparent); }
 
     /* Toast */
     .toast{
-      display:none;
-      width: var(--container);
-      margin: 12px auto 0;
-      background: rgba(34,197,94,.18);
-      border: 1px solid rgba(34,197,94,.35);
-      color:#eaffef; padding:12px 14px;
-      border-radius: 12px; font-weight:600;
-      backdrop-filter: blur(10px);
+      display:none; width:var(--container); margin:12px auto 0;
+      background: color-mix(in oklab, #22c55e 14%, #ffffff 0%);
+      border:1px solid color-mix(in oklab, #22c55e 38%, #ffffff 0%);
+      color:#065f46; padding:12px 14px; border-radius:12px; font-weight:600;
     }
     .toast.show{ display:block; }
 
-    footer{
-      color:#c9d3dd; opacity:.85; text-align:center; padding: 28px 12px 40px;
+    /* Footer (matches index) */
+    footer.site-footer{
+      border-top:1px solid var(--divider); color:#777; text-align:center;
+      padding: 28px 16px; font-size:.95rem; margin-top: 56px;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark){
+      body{
+        color:#e6e9ee;
+        background:
+          radial-gradient(1200px 520px at 80% -10%, color-mix(in oklab, var(--cyan) 28%, transparent) , transparent 60%),
+          radial-gradient(1000px 520px at -10% 0%, color-mix(in oklab, var(--blue) 24%, transparent), transparent 55%),
+          linear-gradient(180deg, #0b1218 0%, #0e141b 100%);
+      }
+      header.site-nav{ background: color-mix(in oklab, #0f2027 88%, black 0%); box-shadow: 0 6px 16px rgba(0,0,0,.4); }
+      .back-link{ color:#e6e9ee; }
+      .hero p{ color:#a9b3bf; }
+
+      .card{ background:#0f1722; border-color: rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.45); }
+      .legend{ color:#e6e9ee; }
+      .legend::before{ box-shadow:none; }
+
+      .field input, .field select, .field textarea{
+        border-color: rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        color:#e6e9ee;
+      }
+      .field label{ background: transparent; color:#cfd7df; }
+      .field input:focus, .field select:focus, .field textarea:focus{
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 4px color-mix(in oklab, var(--cyan) 26%, transparent);
+        background: rgba(255,255,255,.10);
+      }
+      .field select + label, .field.filled label{
+        background: rgba(15, 32, 39, .75); color:#fff;
+      }
+
+      .toast{ background: rgba(34,197,94,.18); border-color: rgba(34,197,94,.35); color:#eaffef; }
+      footer.site-footer{ border-top-color: rgba(255,255,255,.12); color:#9db0c1; }
     }
   </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="nav">
-    <div class="wrap">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="Moxwell logo" />
+  <div class="brand-accent" aria-hidden="true"></div>
+
+  <!-- ===== Navigation (simple back to home) ===== -->
+  <header class="site-nav" role="banner">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Moxwell home">
+        <img src="logo.png" alt="Moxwell logo" width="28" height="28" />
         <span>MOXWELL</span>
       </a>
-      <a href="index.html">Back to Home</a>
+      <a class="back-link" href="index.html">Back to Home</a>
     </div>
-  </div>
+  </header>
 
-  <!-- Header -->
+  <!-- ===== Hero ===== -->
   <header class="hero">
     <h1>Contact Us</h1>
     <p>Tell us a bit about your needs and we’ll show how Moxwell can help.</p>
@@ -235,17 +223,14 @@
     Thanks — your message has been received. We’ll get back to you shortly.
   </div>
 
-  <!-- Card -->
+  <!-- ===== Card / Form ===== -->
   <main class="card" role="main">
     <div class="legend">Your Details</div>
 
-    <!-- Replace action with your Formspree endpoint -->
+    <!-- Replace action with your Formspree endpoint if different -->
     <form id="contactForm" action="https://formspree.io/f/mwpnrodp" method="post" novalidate>
       <input type="hidden" name="_subject" value="New message from Moxwell Contact Form" />
-      <!-- Optional: redirect after submit -->
-      <!-- <input type="hidden" name="_redirect" value="https://moxwell.ca/thank-you.html" /> -->
 
-      <!-- Name + Company -->
       <div class="grid">
         <div class="field">
           <input id="first" name="first" type="text" placeholder=" " required />
@@ -268,7 +253,6 @@
         </div>
       </div>
 
-      <!-- Role, Country, Phone -->
       <div class="grid">
         <div class="field">
           <input id="role" name="role" type="text" placeholder=" " />
@@ -303,7 +287,6 @@
         </div>
       </div>
 
-      <!-- Timeline / Budget -->
       <div class="grid">
         <div class="field">
           <select id="timeline" name="timeline" aria-label="Timeline">
@@ -325,7 +308,6 @@
         </div>
       </div>
 
-      <!-- Referral -->
       <div class="field">
         <select id="source" name="source" aria-label="How did you hear about us">
           <option value="" selected disabled>Select one</option>
@@ -336,22 +318,19 @@
         <label for="source">How did you hear about us?</label>
       </div>
 
-      <!-- Message -->
       <div class="field">
         <textarea id="message" name="message" placeholder=" " required></textarea>
         <label for="message">How can we help? *</label>
       </div>
 
-      <!-- Consent -->
       <div class="consent">
         <input id="consent" name="consent" type="checkbox" required />
         <label for="consent">I agree to be contacted about my inquiry and understand my data will be handled in accordance with Moxwell’s privacy practices.</label>
       </div>
 
-      <!-- Optional marketing opt-in -->
       <div class="consent">
         <input id="optin" name="optin" type="checkbox" />
-        <label for="optin" class="muted">Send me occasional product updates and insights. You can unsubscribe at any time.</label>
+        <label for="optin" class="muted">Send me occasional product updates and insights. You can unsubscribe any time.</label>
       </div>
 
       <div class="actions">
@@ -360,10 +339,10 @@
     </form>
   </main>
 
-  <footer>© 2025 Moxwell. Built with innovation in Canada.</footer>
+  <footer class="site-footer">© 2025 Moxwell. Built with innovation in Canada.</footer>
 
   <script>
-    // Keep labels floated when fields have values (on load & change)
+    // Keep labels floated when fields have values (load + change)
     const allFields = document.querySelectorAll('.field input, .field textarea, .field select');
     function updateFilled(el){ el.closest('.field')?.classList.toggle('filled', !!el.value.trim()); }
     allFields.forEach(el => {
@@ -372,23 +351,19 @@
       el.addEventListener('input',  () => updateFilled(el));
     });
 
-    // Submit via Formspree with a toast (AJAX)
+    // AJAX submit to Formspree with toast
     const form  = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
 
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // we do AJAX so we can show the toast
+      e.preventDefault();
       if(!form.checkValidity()){ form.reportValidity(); return; }
 
-      const endpoint = form.getAttribute('action'); // your Formspree URL
+      const endpoint = form.getAttribute('action');
       const data = new FormData(form);
 
       try {
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
+        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
         if (res.ok) {
           toast.classList.add('show');
           form.reset();
@@ -398,7 +373,7 @@
         } else {
           alert('Sorry, something went wrong sending your message.');
         }
-      } catch (err) {
+      } catch {
         alert('Network error. Please try again.');
       }
     });
