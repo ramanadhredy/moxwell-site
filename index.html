@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== Meta ===== -->
+  <!-- ========== Meta ========== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Moxwell - Smart Insurance. Real Impact.</title>
-  <meta name="description" content="AI Claims Assistant and CX Transparency for mid-size insurers. Guidewire-compatible, cloud-native, enterprise-ready." />
+  <title>Moxwell — Smart Insurance. Real Impact.</title>
+  <meta name="description" content="AI Claims Assistant and CX Transparency for mid-size insurers. Cloud-native, enterprise-ready, Canada-first." />
+  <link rel="canonical" href="https://www.moxwell.ca/" />
 
-  <!-- ===== Icons / Fonts ===== -->
+  <!-- PWA / Icons -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
-  <link rel="prefetch" href="contact.html" as="document" />
 
+  <!-- Theming -->
+  <meta name="theme-color" content="#0066ff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1218" media="(prefers-color-scheme: dark)">
+
+  <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="prefetch" href="contact.html" as="document" />
 
-  <!-- ===== Social ===== -->
-  <meta property="og:title" content="Moxwell - Smart Insurance. Real Impact." />
-  <meta property="og:description" content="AI Claims Assistant and CX Transparency for mid-size insurers. Guidewire-compatible, cloud-native, enterprise-ready." />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Moxwell — Smart Insurance. Real Impact." />
+  <meta property="og:description" content="AI Claims Assistant and CX Transparency for mid-size insurers. Cloud-native, enterprise-ready, Canada-first." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     /* =========================
-       Moxwell Tech Palette 2025+
+       Moxwell Design System (Tech Blue)
        ========================= */
     :root{
       /* Core palette */
@@ -41,22 +47,19 @@
       --bg:   #ffffff;          /* Page background */
       --panel:#f6f9ff;          /* Subtle blue-tinted panel */
 
-      /* Legacy warmth (sparingly) */
-      --warm: #ff6b2d;
-
       /* Structure */
       --divider: #eaeaea;
-      --container: min(1120px, 92vw);
+      --container: min(1180px, 92vw);
 
       /* Radii & shadows */
-      --r: 12px;
+      --r-sm: 10px; --r: 14px; --r-lg: 18px;
       --shadow-sm: 0 4px 10px rgba(0,0,0,.06);
       --shadow-md: 0 10px 30px rgba(0,0,0,.08);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,.10);
+      --shadow-lg: 0 22px 70px rgba(0,0,0,.12);
 
       /* Spacing scale */
       --s1: 8px; --s2: 12px; --s3: 16px; --s4: 24px; --s5: 32px;
-      --s6: 48px; --s7: 72px; --s8: 96px;
+      --s6: 48px; --s7: 72px; --s8: 96px; --s9: 128px;
     }
 
     /* =========================
@@ -75,7 +78,7 @@
     .container{ width:var(--container); margin-inline:auto; }
     .visually-hidden{ position:absolute !important; width:1px; height:1px; clip:rect(1px,1px,1px,1px); overflow:hidden; white-space:nowrap; }
 
-    /* Top brand thread */
+    /* Brand thread (top) */
     .brand-accent{ position:fixed; inset:0 0 auto 0; height:3px; z-index:1002;
       background: linear-gradient(90deg, var(--blue), var(--cyan)); }
 
@@ -129,20 +132,18 @@
     }
 
     /* =========================
-       Hero (Blue/Cyan gradient + mockup)
+       Hero (ambient Tech gradient + mockup)
        ========================= */
     .hero{
       position: relative;
-      padding: clamp(var(--s7), 12vw, var(--s8)) 0 var(--s6);
-      border-bottom:1px solid var(--divider);
+      padding: clamp(var(--s7), 12vw, var(--s9)) 0 var(--s6);
       overflow: clip;
-      /* ambient tech gradient */
       background:
         radial-gradient(1200px 520px at 80% -10%, color-mix(in oklab, var(--cyan) 25%, transparent) , transparent 60%),
         radial-gradient(1000px 520px at -10% 0%, color-mix(in oklab, var(--blue) 20%, transparent), transparent 55%),
         linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-bottom:1px solid var(--divider);
     }
-    /* subtle grid overlay */
     .hero::after{
       content:""; position:absolute; inset:0; pointer-events:none; opacity:.22;
       background-image:
@@ -151,22 +152,18 @@
       background-size: 32px 32px, 32px 32px;
       mask-image: radial-gradient(1000px 600px at 60% 0%, #000 70%, transparent 100%);
     }
-
     .hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 4vw, 56px); align-items:center; }
     @media (max-width: 900px){ .hero-grid{ grid-template-columns:1fr; } }
 
     .logo{ width:72px; height:72px; }
-    .h1{
-      font-size: clamp(36px, 6vw, 54px);
-      line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; margin-top: var(--s3);
-    }
-    .lede{ margin-top: var(--s3); font-size: clamp(18px, 2.6vw, 20px); color: var(--muted); max-width: 60ch; }
-    .sublede{ margin-top: var(--s2); font-size: clamp(15px, 2.2vw, 17px); color:#6a6a6a; max-width: 65ch; }
+    .h1{ font-size: clamp(36px, 6vw, 56px); line-height: 1.06; font-weight: 700; letter-spacing: -0.02em; margin-top: var(--s3); }
+    .lede{ margin-top: var(--s3); font-size: clamp(18px, 2.6vw, 20px); color: var(--muted); max-width: 62ch; }
+    .sublede{ margin-top: var(--s2); font-size: clamp(15px, 2.2vw, 17px); color:#6a6a6a; max-width: 66ch; }
 
     .cta-row{ margin-top: var(--s4); display:flex; gap:12px; flex-wrap:wrap; }
     .cta{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 20px; border-radius:10px; font-weight:600; font-size:15.5px;
+      padding:12px 20px; border-radius:12px; font-weight:600; font-size:15.5px;
       color:#fff; transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       box-shadow: 0 8px 20px color-mix(in oklab, var(--blue) 24%, transparent);
@@ -176,18 +173,13 @@
     .link-plain{ display:inline-flex; align-items:center; gap:8px; padding:12px 6px; font-weight:600; color:var(--ink); }
     .link-plain i{ color: var(--blue); }
 
-    /* Mockup card (replace later with real screenshot if desired) */
+    /* Mockup card (abstract, screenshot-free) */
     .mockup{
-      position: relative;
-      background: #fff;
-      border:1px solid var(--divider);
-      border-radius: 16px;
-      aspect-ratio: 16/10;
-      overflow: hidden;
+      position: relative; background: #fff; border:1px solid var(--divider);
+      border-radius: 18px; aspect-ratio: 16/10; overflow: hidden;
       box-shadow: var(--shadow-md), 0 30px 80px rgba(0,0,0,.06);
       display:grid; place-items:center;
     }
-    /* Abstract gradient inside mockup */
     .mockup::before{
       content:""; position:absolute; inset:0;
       background:
@@ -195,36 +187,38 @@
         radial-gradient(520px 240px at 80% 30%, color-mix(in oklab, var(--cyan) 26%, transparent), transparent 60%),
         linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
     }
-    /* Optional faint UI bars for realism */
     .mockup .ui{
       position:absolute; inset:18px; border-radius:14px; border:1px solid #e9eefb; background: rgba(255,255,255,.72); backdrop-filter: blur(3px);
       display:grid; grid-template-rows: 44px 1fr; overflow:hidden;
     }
-    .mockup .ui .topbar{
-      display:flex; align-items:center; gap:10px; padding:0 12px; border-bottom:1px solid #e9eefb;
-    }
+    .mockup .ui .topbar{ display:flex; align-items:center; gap:10px; padding:0 12px; border-bottom:1px solid #e9eefb; }
     .dot{ width:10px; height:10px; border-radius:50%; }
-    .dot.blue{ background: var(--blue); }
-    .dot.cyan{ background: var(--cyan); }
-    .dot.warm{ background: var(--warm); }
-    .mockup .ui .content{
-      display:grid; grid-template-columns: 220px 1fr; gap:14px; padding:14px;
-    }
-    .sidebar{ border:1px solid #e9eefb; border-radius:10px; background:#fff; box-shadow: var(--shadow-sm); }
-    .canvas { border:1px solid #e9eefb; border-radius:10px; background:linear-gradient(180deg,#fff,#f7fbff); box-shadow: var(--shadow-sm); }
+    .dot.blue{ background: var(--blue); } .dot.cyan{ background: var(--cyan); } .dot.warm{ background: #ff6b2d; }
+    .mockup .ui .content{ display:grid; grid-template-columns: 220px 1fr; gap:14px; padding:14px; }
+    .sidebar{ border:1px solid #e9eefb; border-radius:12px; background:#fff; box-shadow: var(--shadow-sm); }
+    .canvas { border:1px solid #e9eefb; border-radius:12px; background:linear-gradient(180deg,#fff,#f7fbff); box-shadow: var(--shadow-sm); }
 
     /* =========================
-       Sections / Typography
+       Section scaffolding
        ========================= */
     section.block{ padding: var(--s7) 0; }
-    .section-head{ margin-bottom: var(--s5); }
-    .section-head h2{ display:block; font-size: clamp(24px, 3.8vw, 34px); line-height:1.2; letter-spacing:-.01em; margin:0 0 8px; }
-    .section-sub{ color:var(--muted); max-width: 72ch; }
-
+    .section-head{ margin-bottom: var(--s5); text-align:center; }
+    .section-head h2{ display:block; font-size: clamp(24px, 3.8vw, 36px); line-height:1.2; letter-spacing:-.01em; margin:0 0 8px; }
+    .section-sub{ color:var(--muted); max-width: 76ch; margin-inline:auto; }
     .divider{ height:1px; background:var(--divider); margin:0; }
 
     /* =========================
-       Features (light cards)
+       Trust band (placeholder logos)
+       ========================= */
+    .trust{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 14px; align-items:center; opacity:.8; }
+    .trust .chip{
+      height:44px; border:1px dashed var(--divider); border-radius: var(--r-sm);
+      display:flex; align-items:center; justify-content:center; font-weight:600; color:#8aa2c1; background:#fff;
+    }
+    @media (max-width: 900px){ .trust{ grid-template-columns: repeat(2,1fr); } }
+
+    /* =========================
+       Feature cards
        ========================= */
     .features{ display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.8vw, 28px); }
     @media (max-width: 900px){ .features{ grid-template-columns:1fr; } }
@@ -234,7 +228,7 @@
     }
     .feature:hover{ transform: translateY(-2px); border-color:#dcdcdc; }
     .feature-icon{
-      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
+      width:46px; height:46px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;
       border:1px solid var(--divider); margin-bottom:12px; background:#fff;
     }
     .feature-icon i{ color: var(--blue); }
@@ -242,16 +236,53 @@
     .feature p{ margin:0; color:var(--muted); }
 
     /* =========================
-       About
+       Stats band (balanced)
        ========================= */
-    .about-copy{ max-width: 840px; margin-inline:auto; text-align:center; color:var(--muted); }
-    .about-copy p{ margin: 8px 0; }
-    .highlights{ margin-top: var(--s5); display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.8vw, 28px); }
-    @media (max-width: 900px){ .highlights{ grid-template-columns:1fr; } }
-    .highlight{ border:1px solid var(--divider); border-radius:14px; padding:20px; }
-    .highlight h4{ margin:0 0 6px; display:flex; align-items:center; gap:10px; font-size:16px; }
-    .highlight h4 i{ color: var(--blue); }
-    .highlight p{ margin:0; color:var(--muted); }
+    .stats-band{ background: linear-gradient(135deg, #f9fbff, #eef3ff); border-top:1px solid rgba(0,0,0,.05); border-bottom:1px solid rgba(0,0,0,.05); }
+    .stats-grid{
+      display:flex; justify-content:center; align-items:flex-start; gap:80px; flex-wrap:wrap;
+      margin-top:60px; text-align:center; padding-bottom:4px;
+    }
+    .stat-item{ flex:1 1 260px; min-width:240px; max-width:300px; }
+    .stat-item h3{ font-size:2.8rem; font-weight:700; color:#000; margin-bottom:6px; line-height:1.2; }
+    .stat-item p{ font-size:1.05rem; color:#555; margin:0; }
+    .accent{ color:var(--blue); }
+    .stats-pad{ padding:80px 0; }
+
+    @media (max-width:768px){
+      .stats-grid{ gap:40px; }
+      .stat-item h3{ font-size:2.2rem; }
+    }
+
+    /* =========================
+       How it works (timeline)
+       ========================= */
+    .timeline{ display:grid; gap:16px; }
+    .step{
+      display:grid; grid-template-columns: 56px 1fr; gap:16px; align-items:flex-start;
+      background:#fff; border:1px solid var(--divider); border-radius:14px; padding:16px;
+    }
+    .step .idx{
+      width:56px; height:56px; border-radius:14px; display:grid; place-items:center; font-weight:700; color:#fff;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+    }
+    .step h4{ margin:4px 0 6px; }
+    .step p{ margin:0; color: var(--muted); }
+
+    /* =========================
+       FAQ (zero-JS accordion)
+       ========================= */
+    .faq{ display:grid; gap:12px; }
+    details.faq-item{
+      border:1px solid var(--divider); border-radius:12px; background:#fff; padding:14px 16px;
+    }
+    details.faq-item summary{
+      cursor:pointer; list-style:none; font-weight:600; display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    details.faq-item summary::-webkit-details-marker{ display:none; }
+    .faq-item .chev{ transition: transform .2s ease; color: var(--blue); }
+    details[open] .chev{ transform: rotate(180deg); }
+    .faq-item .body{ margin-top:10px; color: var(--muted); }
 
     /* =========================
        Contact
@@ -259,8 +290,8 @@
     .contact .card{
       background:#fff; border:1px solid var(--divider); border-radius:16px; padding:24px; box-shadow: var(--shadow-sm);
     }
-    .contact .actions{ margin-top: 10px; display:flex; gap:12px; flex-wrap:wrap; }
-    .email-display{ margin-top: 8px; }
+    .contact .actions{ margin-top: 10px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .email-display{ margin-top: 8px; text-align:center; }
     .email-display a{ color:var(--blue); text-decoration: underline; }
 
     /* =========================
@@ -279,7 +310,7 @@
 
     @media (prefers-reduced-motion: reduce){
       .float{ opacity:1 !important; animation:none !important; transform:none !important; }
-      .cta{ transition:none; }
+      .cta, .feature, .step, .stat-item{ transition:none; }
     }
 
     /* =========================
@@ -302,7 +333,6 @@
         --divider: rgba(255,255,255,.12);
         --panel:#0f1722;
       }
-
       body{ background: var(--bg); color: var(--ink); }
       .brand-accent{ background: linear-gradient(90deg, color-mix(in oklab, var(--blue) 90%, #fff 0%), color-mix(in oklab, var(--cyan) 90%, #fff 0%)); }
 
@@ -314,7 +344,6 @@
       nav.primary{ background: color-mix(in oklab, var(--deep) 94%, black 0%); }
 
       .hero{
-        border-bottom:1px solid var(--divider);
         background:
           radial-gradient(1200px 520px at 80% -10%, color-mix(in oklab, var(--cyan) 28%, transparent) , transparent 60%),
           radial-gradient(1000px 520px at -10% 0%, color-mix(in oklab, var(--blue) 24%, transparent), transparent 55%),
@@ -344,24 +373,23 @@
         box-shadow: none;
       }
 
-      .feature{ background:#0f1722; border-color: var(--divider); }
+      .trust .chip{ background:#0f1722; color:#a9b3bf; border-color: var(--divider); }
+
+      .feature, .step, .contact .card, .faq-item{ background:#0f1722; border-color: var(--divider); }
       .feature-icon{ background:#0f1722; border-color: var(--divider); }
       .feature-icon i{ color: var(--cyan); }
 
-      .highlight{ background:#0f1722; border-color: var(--divider); }
-      .highlight h4 i{ color: var(--cyan); }
-
-      .contact .card{ background:#0f1722; border-color: var(--divider); box-shadow: none; }
       .email-display a{ color: var(--cyan); }
-
       footer.site-footer{ border-top-color: var(--divider); color: #9db0c1; }
-
       .to-top a{ background:#0f1722; border-color: var(--divider); box-shadow: none; }
       .to-top a i{ color: var(--cyan); }
+      .stat-item h3{ color:#e6e9ee; }
+      .stat-item p{ color:#a9b3bf; }
+      .stats-band{ background: linear-gradient(135deg, #0f1520, #0b1218); }
     }
   </style>
 
-  <!-- ===== Structured Data ===== -->
+  <!-- ========== Structured Data: Organization + FAQ ========== -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -373,12 +401,23 @@
     "sameAs":["https://www.linkedin.com/company/moxwell"]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is Moxwell compatible with existing systems?","acceptedAnswer":{"@type":"Answer","text":"Yes. Moxwell integrates via standard APIs and event patterns used across claims, policy, CRM, and data platforms."}},
+      {"@type":"Question","name":"Is deployment cloud-native?","acceptedAnswer":{"@type":"Answer","text":"Yes. Deployments are cloud-native with role-based access and auditable activity logs aligned to enterprise standards."}},
+      {"@type":"Question","name":"How fast can we pilot?","acceptedAnswer":{"@type":"Answer","text":"Teams typically begin a sandbox pilot within weeks using preconfigured templates and minimal infrastructure setup."}}
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="brand-accent" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===== Navigation ===== -->
+  <!-- ========== Navigation ========== -->
   <header class="site-nav" role="banner">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="Moxwell home">
@@ -400,14 +439,14 @@
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
+  <!-- ========== Hero ========== -->
   <section id="home" class="hero" aria-label="Hero">
     <div class="container hero-grid">
       <div>
         <img src="logo.png" alt="Moxwell Logo" class="logo float" width="72" height="72" />
         <h1 class="h1 float">Smart Insurance. Real Impact.</h1>
         <p class="lede float">Practical AI for faster claims, clearer customer experiences, and seamless integrations for mid-size insurers.</p>
-        <p class="sublede float">AI Claims Assistant + CX Transparency. Guidewire-compatible, cloud-native, enterprise-ready.</p>
+        <p class="sublede float">AI Claims Assistant + CX Transparency. Cloud-native, Canada-first, enterprise-ready.</p>
         <div class="cta-row float">
           <a id="letsTalk" class="cta" href="contact.html">Let’s Talk</a>
           <a class="link-plain" href="#features"><i class="fa-solid fa-arrow-down"></i> Explore solutions</a>
@@ -430,19 +469,34 @@
   </section>
 
   <main id="main">
-    <!-- ===== Features ===== -->
+    <!-- ========== Trust band (placeholder) ========== -->
+    <section class="block" aria-label="Trusted by">
+      <div class="container">
+        <div class="trust">
+          <div class="chip">Your Logo</div>
+          <div class="chip">Carrier</div>
+          <div class="chip">Broker</div>
+          <div class="chip">TPA</div>
+          <div class="chip">Partner</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== Features ========== -->
     <section id="features" class="block" aria-labelledby="features-title">
       <div class="container">
         <div class="section-head">
           <h2 id="features-title" class="float">Solutions</h2>
-          <p class="section-sub float">AI that integrates with leading insurance systems to deliver faster claims, fraud reduction, and transparent customer updates.</p>
+          <p class="section-sub float">AI that integrates with existing insurance systems to deliver faster claims, fraud reduction, and transparent customer updates.</p>
         </div>
 
         <div class="features">
           <article class="feature float">
             <div class="feature-icon"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
             <h3>AI Claims Assistant</h3>
-            <p>Fraud detection, instant summaries, and auto-drafted letters that integrate with ClaimCenter via standard APIs.</p>
+            <p>Fraud detection, instant summaries, and auto-drafted letters that connect to core claims platforms via standard APIs.</p>
           </article>
 
           <article class="feature float">
@@ -460,31 +514,94 @@
       </div>
     </section>
 
+    <!-- ========== Performance Stats ========== -->
+    <section class="block stats-band stats-pad" aria-labelledby="stats-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="stats-title" class="float">Performance at a Glance</h2>
+          <p class="section-sub float">Practical results that insurers and teams can measure.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item float">
+            <h3>Up to <span class="accent">35%</span></h3>
+            <p>faster average claim handling</p>
+          </div>
+          <div class="stat-item float">
+            <h3>Up to <span class="accent">22%</span></h3>
+            <p>quicker from FNOL to closure</p>
+          </div>
+          <div class="stat-item float">
+            <h3><span class="accent">99.9%</span></h3>
+            <p>cloud-native uptime reliability</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <hr class="divider" />
 
-    <!-- ===== About ===== -->
+    <!-- ========== How it works ========== -->
+    <section class="block" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="how-title" class="float">How Moxwell Fits Your Stack</h2>
+          <p class="section-sub float">Prebuilt connectors, clear governance, and secure deployment patterns designed for P&amp;C teams.</p>
+        </div>
+        <div class="timeline">
+          <div class="step float">
+            <div class="idx">01</div>
+            <div>
+              <h4>Connect</h4>
+              <p>Use standard APIs and service accounts to connect to core claims systems, CRM, and data lake.</p>
+            </div>
+          </div>
+          <div class="step float">
+            <div class="idx">02</div>
+            <div>
+              <h4>Configure</h4>
+              <p>Enable use-cases: fraud signals, claim summaries, outbound communications, and CX updates.</p>
+            </div>
+          </div>
+          <div class="step float">
+            <div class="idx">03</div>
+            <div>
+              <h4>Pilot &amp; Scale</h4>
+              <p>Run a measured pilot, capture KPIs, expand across LOBs with governance and RBAC.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== About ========== -->
     <section id="about" class="block" aria-labelledby="about-title">
       <div class="container">
         <div class="section-head">
           <h2 id="about-title" class="float">About Moxwell</h2>
-          <p class="section-sub float about-copy">
-            Moxwell is reimagining insurance with AI solutions designed for speed, clarity, and trust. We combine claims intelligence with
-            customer transparency, helping adjusters move faster while giving policyholders real-time updates.
+          <p class="section-sub float" style="max-width: 840px;">
+            We combine claims intelligence with customer transparency, helping adjusters move faster while giving policyholders real-time updates.
+            Built for mid-size insurers and brokers, our tools are secure, cloud-native, and easy to adopt.
           </p>
         </div>
 
-        <div class="highlights">
-          <article class="highlight float">
-            <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Data Privacy First</h4>
-            <p>Confidential data protected with encryption and access controls.</p>
+        <div class="features">
+          <article class="feature float">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+            <h3>Data Privacy First</h3>
+            <p>Encryption, audit trails, and role-based access aligned to enterprise compliance standards.</p>
           </article>
-          <article class="highlight float">
-            <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Real-Time Analytics</h4>
-            <p>Clear dashboards to monitor claims, costs, and customer trends.</p>
+          <article class="feature float">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+            <h3>Real-Time Analytics</h3>
+            <p>Operational dashboards for claims performance, CX metrics, and cost drivers.</p>
           </article>
-          <article class="highlight float">
-            <h4><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Seamless Integration</h4>
-            <p>Works with existing systems and CRMs through secure APIs.</p>
+          <article class="feature float">
+            <div class="feature-icon"><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i></div>
+            <h3>Seamless Integration</h3>
+            <p>Works with existing systems and CRMs, plus data lakes, through secure APIs.</p>
           </article>
         </div>
       </div>
@@ -492,7 +609,34 @@
 
     <hr class="divider" />
 
-    <!-- ===== Contact ===== -->
+    <!-- ========== FAQ ========== -->
+    <section class="block" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="faq-title" class="float">FAQs</h2>
+          <p class="section-sub float">What teams often ask before piloting Moxwell.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item float">
+            <summary>Is Moxwell compatible with existing systems?<i class="fa-solid fa-chevron-down chev"></i></summary>
+            <div class="body">Yes. Moxwell is designed with standard API patterns for easy connection to claims, policy, CRM, and data platforms without complex re-architecture.</div>
+          </details>
+
+          <details class="faq-item float">
+            <summary>How fast can we pilot?<i class="fa-solid fa-chevron-down chev"></i></summary>
+            <div class="body">Teams typically begin a sandbox pilot within weeks using pre-configured templates and minimal infrastructure setup.</div>
+          </details>
+
+          <details class="faq-item float">
+            <summary>Where is data processed?<i class="fa-solid fa-chevron-down chev"></i></summary>
+            <div class="body">Moxwell is built for cloud-native deployment within Canada, ensuring that all customer data remains secure and compliant with national privacy standards. Access is managed through role-based controls (RBAC), with auditable activity logs aligned to enterprise standards.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Contact ========== -->
     <section id="contact" class="block contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
@@ -502,7 +646,8 @@
 
         <div class="card">
           <div class="actions">
-            <a class="cta float" href="contact.html">Let’s Talk</a>
+            <a id="letsTalk2" class="cta float" href="contact.html">Let’s Talk</a>
+            <a class="link-plain float" href="mailto:info@moxwell.ca"><i class="fa-solid fa-envelope"></i> info@moxwell.ca</a>
           </div>
           <p class="email-display float">Prefer email? <a href="mailto:info@moxwell.ca">info@moxwell.ca</a></p>
         </div>
@@ -510,7 +655,7 @@
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
+  <!-- ========== Footer ========== -->
   <footer class="site-footer" role="contentinfo">
     &copy; 2025 Moxwell. Built with innovation in Canada.
   </footer>
@@ -520,12 +665,12 @@
     <a href="#home" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
   </div>
 
+  <!-- ========== Scripts (no external JS) ========== -->
   <script>
-    /* ===== Mobile menu toggle ===== */
+    /* Mobile menu toggle + a11y */
     const navToggle = document.getElementById('navToggle');
     const primaryNav = document.getElementById('primaryNav');
     const navList   = document.getElementById('navList');
-
     function setMenu(open){
       navToggle.setAttribute('aria-expanded', String(open));
       navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -536,17 +681,15 @@
     navToggle.addEventListener('click', () => setMenu(!primaryNav.classList.contains('open')));
     navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-    /* ===== Reveal on scroll ===== */
+    /* Reveal on scroll */
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-        }
+        if(entry.isIntersecting){ entry.target.classList.add('in'); }
       });
     }, {threshold:.15});
     document.querySelectorAll('.float').forEach(el=>io.observe(el));
 
-    /* ===== Back-to-top visibility ===== */
+    /* Back-to-top visibility */
     const toTop = document.getElementById('toTop');
     const showFabAfter = 300;
     window.addEventListener('scroll', () => {
@@ -557,17 +700,19 @@
       }
     }, {passive:true});
 
-    /* ===== Optional page fade when going to contact ===== */
+    /* Optional: page fade when going to contact */
     (function () {
-      const btn = document.getElementById('letsTalk');
-      if (!btn) return;
+      const btns = [document.getElementById('letsTalk'), document.getElementById('letsTalk2')].filter(Boolean);
+      if (btns.length === 0) return;
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      btn.addEventListener('click', function(e){
-        if(reduce) return;
-        e.preventDefault();
-        document.body.style.transition = 'opacity .22s ease';
-        document.body.style.opacity = '.15';
-        setTimeout(()=>{ window.location.href = btn.getAttribute('href'); }, 220);
+      btns.forEach(btn=>{
+        btn.addEventListener('click', function(e){
+          if(reduce) return;
+          e.preventDefault();
+          document.body.style.transition = 'opacity .22s ease';
+          document.body.style.opacity = '.15';
+          setTimeout(()=>{ window.location.href = btn.getAttribute('href'); }, 220);
+        });
       });
     })();
   </script>
